@@ -1,0 +1,80 @@
+
+.col>*{
+    width:100%;
+    max-height: 100%;
+}
+.rot{
+    ;
+}
+a{
+    color: #00b5ad;
+    text-decoration: underline;
+}
+header
+{
+    border-bottom-style: solid;
+
+}
+footer{
+
+
+    border-top-style:solid;
+
+}
+
+
+nav a{
+
+    width:auto;
+    padding: 0em 1em;
+    border-right-style: solid;
+    border-right-color: black;
+    overflow: hidden;
+
+
+}
+.lastlinkright
+{
+    border-right-style:hidden;
+}
+nav ul{
+
+    display: inline-block;
+    width:auto;
+}
+
+img
+{
+    overflow:hidden ;
+}
+
+
+ .container{
+     border-style:solid;
+ }
+
+ .suchen label[for="suchleiste"]
+ {
+     padding:auto;
+     border-radius:50px;
+     border-style:solid;
+ }
+
+ fieldset{
+    border: black;
+     padding:22px;
+
+ }
+ .rahmenumform
+ {
+     border-style:solid;
+ }
+
+a:active{
+     color: black;
+ }
+
+
+
+
+

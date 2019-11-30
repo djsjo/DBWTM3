@@ -1,0 +1,13 @@
+
+tr:nth-child(even) {
+    background: lightsteelblue;
+}
+tbody td:nth-child(2){
+    background-color: white;
+    border-color: white
+}
+
+
+[class*="fas"] { [
+    background:blue;
+}
