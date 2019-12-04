@@ -1,10 +1,11 @@
-<?php require __DIR__.'/vendor/autoload.php';
-$dotenv=Dotenv\Dotenv::create(__DIR__,'.env');
+<?php require __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
 $dotenv->load();
-$dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
+$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,22 +22,79 @@ $dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
     <title>Produkte.html</title>
 </head>
 <body>
+
+
 <div class="container">
     <!--header-->
+
     <?php include('snippets/NavOben.php'); ?>
     <!--main part-->
     <div class="row" style="margin-top: 2em;">
         <!--formbereich-->
+
+
         <div class="col-3" style="margin-top: 4em;margin-bottom: 1.2em;">
             <form id="formular" name="speiseliste filtern">
                 <fieldset form="formular" style="border-style: solid;padding-bottom: 5em">
                     <legend style="padding-bottom: 0.6em;">Speiseliste filtern</legend>
                     <select name="speiselistenKategorien" size="1" style="border-style:solid;border-color: black">
-                        <option>Kategorien</option>
-                        <option>Schnitzel</option>
-                        <option>Bratrolle</option>
-                        <option>Krautsalat</option>
-                        <option>Falafel</option>
+                        <optgroup label="Generell">
+                            <option> Alle zeigen</option>
+                        </optgroup>
+                       
+
+                        <?php
+                        $query = 'SELECT * FROM Kategorien ';
+
+                        $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
+                        if (mysqli_connect_errno()) {
+                            printf("Konnte nicht zur entfernten Datenbank verbinden: %s\n", mysqli_connect_error());
+                            exit();
+                        }
+                        $oberkatquery = $query . ' where hatOberkategorie IS Null;';
+                        $unterkatquery = $query . 'where hatOberkategorie IS Not Null;';
+
+
+                        $oberkatarray = array();
+                        $unterkatarray = [];
+                        //$oberkatarray=[];
+
+
+                        if ($oberkategorie = mysqli_query($link, $oberkatquery)) {
+                            while ($row = mysqli_fetch_assoc($oberkategorie)) {
+                                // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
+                                // echo '<li id="id-' . $row['ID'] . '">' . $row['Name'] . '</li>';
+                                $oberkatarray[] = $row;
+
+                            }
+                        }
+                        if ($unterkategorie = mysqli_query($link, $unterkatquery)) {
+                            while ($row = mysqli_fetch_assoc($unterkategorie)) {
+                                // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
+                                // echo '<li id="id-' . $row['ID'] . '">' . $row['Name'] . '</li>';
+                                $unterkatarray[] = $row;
+                            }
+                        }
+                        var_dump($unterkatarray);
+                        //echo $oberkatarray[0]['ID'];
+                        //für jedes array der oberkategorie
+                        foreach($oberkatarray as $oberkategor)
+                        {
+                            echo '<optgroup label="'.$oberkategor['Bezeichnung'].'">';
+                            foreach($unterkatarray as $unterkategor){
+                                //echo '<option>'.$unterkategor['hatOberkategorie'].'</option>';
+                               // echo '<option>'.$oberkategor['ID'].'</option>';
+                               if($unterkategor['hatOberkategorie']==$oberkategor['ID']){
+                                   echo '<option>'.$unterkategor['Bezeichnung'].'</option>';
+                                }
+                            }
+                            echo '</optgroup>';
+                        }
+
+                        mysqli_close($link);
+
+
+                        ?>
 
                     </select>
 
@@ -44,10 +102,10 @@ $dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
                     <fieldset form="formular" style="padding:10px 0px;">
 
 
-                        <label><input name="speisekategoriebox" type="checkbox"> nur verfügbare</label>
-                        <label><input name="speisekategoriebox" type="checkbox"> nur vegetarische</label>
+                        <label><input name="available" type="checkbox"> nur verfügbare</label>
+                        <label><input name="veggie" type="checkbox"> nur vegetarische</label>
 
-                        <label><input checked name="speisekategoriebox" type="checkbox"> nur vegane</label>
+                        <label><input checked name="vegan" type="checkbox"> nur vegane</label>
 
                     </fieldset>
 
@@ -100,7 +158,7 @@ $dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
                         //echo 'limit wäre ohne gesetzt zu sein' . $limit;
                         //query sezten je nachdem ob avail
 
-                        $link = mysqli_connect(getenv('DB_HOST'),getenv('DB_USER'),getenv('DB_PASS'), getenv('DB_NAME'),getenv('DB_PORT'));
+                        $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
 
                         if (mysqli_connect_errno()) {
                             printf("Konnte nicht zur entfernten Datenbank verbinden: %s\n", mysqli_connect_error());

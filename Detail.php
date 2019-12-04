@@ -19,17 +19,21 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 
     //echo $übergebeneID;
     $query = 'SELECT Mahlzeiten.`Name`, Mahlzeiten.ID, Beschreibung, Vorrat,
-Kategorie, hatBilder.MahlzeitenID, Gastpreis, 
+Kategorie, hatBilder.MahlzeitenID,Jahr, Gastpreis, 
 Studentpreis,
-`MA-Preis`, BilderID, `Alt-Text`, `Binärdaten`, Titel, ZutatenID,Zutaten.Name AS Zutatenname 
-FROM Mahlzeiten JOIN Preise ON Mahlzeiten.id=Preise.MahlzeitenID  
-join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
-JOIN Bilder ON hatBilder.BilderID = Bilder.ID
+`MA-Preis`, BilderID, `Alt-Text`, `Binärdaten`, Titel, ZutatenID ,Zutaten.Name AS Zutatenname
+
+
+
+
+FROM Mahlzeiten 
+left JOIN Preise ON Mahlzeiten.id=Preise.MahlzeitenID  
+left join hatBilder on Mahlzeiten.ID   = hatBilder.MahlzeitenID 
+left JOIN Bilder ON hatBilder.BilderID = Bilder.ID
 left Join enthältZutaten on Mahlzeiten.ID=enthältZutaten.MahlzeitenID
 left Join Zutaten on enthältZutaten.ZutatenID=Zutaten.ID
-WHERE Jahr=YEAR(CURDATE())
- and  Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
-
+WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
+   // and Jahr=YEAR(CURDATE())
     // ; Select ID,Name,Gastpreis from Mahlzeiten where id=\'.$übergebeneID
     $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
 
