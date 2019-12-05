@@ -107,16 +107,22 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                     </select>
 
-
                     <fieldset form="formular" style="padding:10px 0px;">
 
 
-                        <label><input name="avail" type="checkbox" value="1"> nur verfügbare</label>
-                        <label><input name="veggie" type="checkbox"> nur vegetarische</label>
+                        <label><input name="avail" type="checkbox" value="1"
+                                      <?php if(isset($_GET['avail']))echo 'checked';?>
+                            > nur verfügbare</label>
+                        <label><input name="veggie" type="checkbox" value="1"
+                                <?php if(isset($_GET['veggie']))echo 'checked';?>
+                            > nur vegetarische</label>
 
-                        <label><input checked name="vegan" type="checkbox"> nur vegane</label>
+                        <label><input  name="vegan" type="checkbox" value="1"
+                                <?php if(isset($_GET['vegan']))echo 'checked';?>
+                            > nur vegane</label>
 
                     </fieldset>
+
 
                     <button name="action" type="submit">Speisen filtern</button>
 
@@ -149,8 +155,8 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                         if (isset($_GET['avail'])) {
                             $avail = $_GET['avail'];
-                            echo 'avail geht';
-                            var_dump($avail);
+                            //echo 'avail geht';
+                            //var_dump($avail);
 
                             //wenn avail query verändern
                             $query = 'SELECT * FROM Mahlzeiten 
