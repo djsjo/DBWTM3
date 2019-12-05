@@ -220,6 +220,8 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             $i = 1;
                             //echo $i;
                             echo '<div class="row" style="margin-bottom: 1em;">';
+                            if($result->num_rows==0){echo 'Es wurde nix gefunden';}
+                            //var_dump($result->num_rows);
                             while (($row = mysqli_fetch_assoc($result)) && ($i <= $limit)) {
                                 // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
                                 //echo '<li id="id-' . $row['Nummer'] . '">' . $row['Nutzername'] . $row['E-Mail'] . '</li>';
@@ -277,6 +279,8 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                             //echo $i;
                             echo '<div class="row" style="margin-bottom: 1em;">';
+                           if($result->num_rows==0){echo 'Es wurde nix gefunden';}
+                            //var_dump($result->num_rows);
                             while (($row = mysqli_fetch_assoc($result))) {
                                 // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
                                 //echo '<li id="id-' . $row['Nummer'] . '">' . $row['Nutzername'] . $row['E-Mail'] . '</li>';
