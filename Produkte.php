@@ -135,7 +135,20 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
         <div class="col-9">
             <div class="row" style="margin-bottom: 2em;">
                 <div class="col">
-                    <h2>Verfügbare Speisen (Bestseller)</h2>
+                    <h2>Verfügbare Speisen
+                    <?php
+                    if(isset($_GET['speiselistenKategorien'])and $_GET['speiselistenKategorien']!=0)
+                    {
+                        foreach ($unterkatarray as $unterkategor){
+                            if($_GET['speiselistenKategorien']==$unterkategor['ID'])
+                            echo '('.$unterkategor['Bezeichnung'].')';
+                        }
+
+                    }
+                    else  echo '(Alle)';
+                    ?>
+
+                    </h2>
                 </div>
             </div>
 
