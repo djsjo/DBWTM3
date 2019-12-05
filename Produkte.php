@@ -148,7 +148,7 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
                                          where Vorrat >0'; // Ihre SQL Query aus HeidiSQL
 
-                            if (isset($_GET['speiselistenKategorien'])) {
+                            if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien']!=0) {
                                 $query = $query . ' and Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
                             $query = $query . ';';
@@ -161,11 +161,11 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
                             //echo 'avail geht nicht';
 
 
-                            if (isset($_GET['speiselistenKategorien'])) {
+                            if (isset($_GET['speiselistenKategorien'])and $_GET['speiselistenKategorien']!=0) {
                                 $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
                             $query = $query . ";";
-                     
+
                         }
 
                         // echo $query;
@@ -226,7 +226,7 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                     join Kategorien on Mahlzeiten.Kategorie=Kategorien.ID';
 
-                        if (isset($_GET['speiselistenKategorien'])) {
+                        if (isset($_GET['speiselistenKategorien'])and $_GET['speiselistenKategorien']!=0) {
                             $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                         }
                         $query = $query . ';';

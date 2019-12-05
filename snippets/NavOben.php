@@ -24,7 +24,7 @@
                     if ($rest == "Produkte.php") {
                         echo '<li ><a > Mahlzeiten</a ></li >';
                     } else {
-                        echo '<li ><a href = "Produkte.php?limit=100" target = "_self" > Mahlzeiten</a ></li >';
+                        echo '<li ><a href = "Produkte.php" target = "_self" > Mahlzeiten</a ></li >';
                     }
                     ?>
                     <?php
