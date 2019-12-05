@@ -27,9 +27,6 @@ Kategorie, hatBilder.MahlzeitenID,Jahr, Gastpreis,
 Studentpreis,
 `MA-Preis`, BilderID, `Alt-Text`, `Binärdaten`, Titel, ZutatenID ,Zutaten.Name AS Zutatenname
 
-
-
-
 FROM Mahlzeiten 
 left JOIN Preise ON Mahlzeiten.id=Preise.MahlzeitenID  
 left join hatBilder on Mahlzeiten.ID   = hatBilder.MahlzeitenID 

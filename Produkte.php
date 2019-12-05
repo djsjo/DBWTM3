@@ -149,7 +149,8 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                         if (isset($_GET['avail'])) {
                             $avail = $_GET['avail'];
-                            // echo 'avail geht';
+                            echo 'avail geht';
+                            var_dump($avail);
 
                             //wenn avail query verändern
                             $query = 'SELECT * FROM Mahlzeiten 
@@ -195,36 +196,37 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         if ($result = mysqli_query($link, $query)) {
                             if (isset($_GET['limit'])) {
                                 $limit = $_GET['limit'];
-                                //echo 'limit geht';
-                                $i = 1;
-                                //echo $i;
-                                echo '<div class="row" style="margin-bottom: 1em;">';
-                                while (($row = mysqli_fetch_assoc($result)) && ($i <= $limit)) {
-                                    // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
-                                    //echo '<li id="id-' . $row['Nummer'] . '">' . $row['Nutzername'] . $row['E-Mail'] . '</li>';
-                                    // echo $row['ID'];
-                                    //breite berechnen
+                            }
+                            //echo 'limit geht';
+                            $i = 1;
+                            //echo $i;
+                            echo '<div class="row" style="margin-bottom: 1em;">';
+                            while (($row = mysqli_fetch_assoc($result)) && ($i <= $limit)) {
+                                // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
+                                //echo '<li id="id-' . $row['Nummer'] . '">' . $row['Nutzername'] . $row['E-Mail'] . '</li>';
+                                // echo $row['ID'];
+                                //breite berechnen
 
 
-                                    echo '<div class="col-3" style=" ">';
-                                    // <img alt="miniempty Picture"
-                                    //  src="pictures/miniEmptyPicture.PNG"
-                                    //title="example mini Picture" class="h-50 w-100">'
-                                    echo '<img alt="' . $row['Alt-Text'] .
-                                        '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;height: 63%" class=" w-100">'
+                                echo '<div class="col-3" style=" ">';
+                                // <img alt="miniempty Picture"
+                                //  src="pictures/miniEmptyPicture.PNG"
+                                //title="example mini Picture" class="h-50 w-100">'
+                                echo '<img alt="' . $row['Alt-Text'] .
+                                    '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;height: 63%" class=" w-100">'
 
 
-                                        . $row['Name'] .
-                                        '<p><a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a></p>';
-                                    echo '</div>';
-
-
-                                    $i++;
-                                }
-
+                                    . $row['Name'] .
+                                    '<p><a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a></p>';
                                 echo '</div>';
 
+
+                                $i++;
                             }
+
+                            echo '</div>';
+
+
                         }
 
                         mysqli_close($link);
