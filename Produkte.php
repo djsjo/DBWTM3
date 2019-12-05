@@ -40,7 +40,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                     <legend style="padding-bottom: 0.6em;">Speiseliste filtern</legend>
                     <select name="speiselistenKategorien" size="1" style="border-style:solid;border-color: black">
                         <optgroup label="Generell">
-                            <option value="0" > Alle zeigen</option>
+                            <option value="0"> Alle zeigen</option>
                         </optgroup>
 
 
@@ -76,23 +76,24 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $unterkatarray[] = $row;
                             }
                         }
-                        function sel($filterKategorie,$optionID){
-                            if($filterKategorie==$optionID)
-                            {
+                        function sel($filterKategorie, $optionID)
+                        {
+                            if ($filterKategorie == $optionID) {
                                 return "selected";
                             }
                         }
+
                         //var_dump($unterkatarray);
                         //echo $oberkatarray[0]['ID'];
                         //für jedes array der oberkategorie
                         foreach ($oberkatarray as $oberkategor) {
                             echo '<optgroup label="' . $oberkategor['Bezeichnung'] . '">';
                             foreach ($unterkatarray as $unterkategor) {
-                                $selekted=sel($_GET['speiselistenKategorien'],$unterkategor['ID']);
+                                $selekted = sel($_GET['speiselistenKategorien'], $unterkategor['ID']);
                                 //echo '<option>'.$unterkategor['hatOberkategorie'].'</option>';
                                 // echo '<option>'.$oberkategor['ID'].'</option>';
                                 if ($unterkategor['hatOberkategorie'] == $oberkategor['ID']) {
-                                    echo '<option  value="' . $unterkategor['ID'] . '"'.$selekted.'>' . $unterkategor['Bezeichnung'] .
+                                    echo '<option  value="' . $unterkategor['ID'] . '"' . $selekted . '>' . $unterkategor['Bezeichnung'] .
                                         '</option>';
                                 }
                             }
@@ -155,9 +156,11 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
+                                        left JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+                                        LEFT JOIN Zutaten ON Zutaten.ID=enthältZutaten.ZutatenID 
                                          where Vorrat >0'; // Ihre SQL Query aus HeidiSQL
 
-                            if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien']!=0) {
+                            if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                                 $query = $query . ' and Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
                             $query = $query . ';';
@@ -166,11 +169,13 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             $query = 'SELECT * FROM Mahlzeiten 
                             join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
-                                    JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID';
+                                    JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
+                                    left JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+                                    LEFT JOIN Zutaten ON Zutaten.ID=enthältZutaten.ZutatenID ';
                             //echo 'avail geht nicht';
 
 
-                            if (isset($_GET['speiselistenKategorien'])and $_GET['speiselistenKategorien']!=0) {
+                            if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                                 $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
                             $query = $query . ";";
@@ -233,9 +238,11 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         $query = 'SELECT * FROM Mahlzeiten 
                             join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
-                                    join Kategorien on Mahlzeiten.Kategorie=Kategorien.ID';
+                                    join Kategorien on Mahlzeiten.Kategorie=Kategorien.ID
+                                    left JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+                                    LEFT JOIN Zutaten ON Zutaten.ID=enthältZutaten.ZutatenID ';
 
-                        if (isset($_GET['speiselistenKategorien'])and $_GET['speiselistenKategorien']!=0) {
+                        if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                             $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                         }
                         $query = $query . ';';
