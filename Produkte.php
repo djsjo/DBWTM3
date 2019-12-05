@@ -111,7 +111,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                     <fieldset form="formular" style="padding:10px 0px;">
 
 
-                        <label><input name="available" type="checkbox"> nur verfügbare</label>
+                        <label><input name="avail" type="checkbox" value="1"> nur verfügbare</label>
                         <label><input name="veggie" type="checkbox"> nur vegetarische</label>
 
                         <label><input checked name="vegan" type="checkbox"> nur vegane</label>
@@ -156,8 +156,6 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
-                                        left JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
-                                        LEFT JOIN Zutaten ON Zutaten.ID=enthältZutaten.ZutatenID 
                                          where Vorrat >0'; // Ihre SQL Query aus HeidiSQL
 
                             if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
@@ -170,8 +168,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                     JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
-                                    left JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
-                                    LEFT JOIN Zutaten ON Zutaten.ID=enthältZutaten.ZutatenID ';
+                                    ';
                             //echo 'avail geht nicht';
 
 
@@ -239,8 +236,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                     join Kategorien on Mahlzeiten.Kategorie=Kategorien.ID
-                                    left JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
-                                    LEFT JOIN Zutaten ON Zutaten.ID=enthältZutaten.ZutatenID ';
+                                    ';
 
                         if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                             $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
