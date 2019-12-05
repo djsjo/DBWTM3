@@ -34,14 +34,14 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 
 
         <div class="col-3" style="margin-top: 4em;margin-bottom: 1.2em;">
-            <form id="formular" name="speiseliste filtern">
+            <form id="formular" name="speiseliste filtern" method="get" target="_self">
                 <fieldset form="formular" style="border-style: solid;padding-bottom: 5em">
                     <legend style="padding-bottom: 0.6em;">Speiseliste filtern</legend>
                     <select name="speiselistenKategorien" size="1" style="border-style:solid;border-color: black">
                         <optgroup label="Generell">
-                            <option> Alle zeigen</option>
+                            <option value="0"> Alle zeigen</option>
                         </optgroup>
-                       
+
 
                         <?php
                         $query = 'SELECT * FROM Kategorien ';
@@ -78,14 +78,13 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
                         var_dump($unterkatarray);
                         //echo $oberkatarray[0]['ID'];
                         //für jedes array der oberkategorie
-                        foreach($oberkatarray as $oberkategor)
-                        {
-                            echo '<optgroup label="'.$oberkategor['Bezeichnung'].'">';
-                            foreach($unterkatarray as $unterkategor){
+                        foreach ($oberkatarray as $oberkategor) {
+                            echo '<optgroup label="' . $oberkategor['Bezeichnung'] . '">';
+                            foreach ($unterkatarray as $unterkategor) {
                                 //echo '<option>'.$unterkategor['hatOberkategorie'].'</option>';
-                               // echo '<option>'.$oberkategor['ID'].'</option>';
-                               if($unterkategor['hatOberkategorie']==$oberkategor['ID']){
-                                   echo '<option>'.$unterkategor['Bezeichnung'].'</option>';
+                                // echo '<option>'.$oberkategor['ID'].'</option>';
+                                if ($unterkategor['hatOberkategorie'] == $oberkategor['ID']) {
+                                    echo '<option value="' . $unterkategor['ID'] . '">' . $unterkategor['Bezeichnung'] . '</option>';
                                 }
                             }
                             echo '</optgroup>';
@@ -206,83 +205,56 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 
 
                     } else {
-                        echo '
-                    <div class="row" style="margin-bottom: 1em;">
-                        <div class="col" style="border-style: solid;">
-                            <img alt="miniempty Picture" class="h-50 w-100" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture" width="100">
 
-                            Curry Wok
-
-                            <p><a href="Detail.php">Details</a></p>
-                        </div>
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture">
-
-                            Schnitzel
-
-                            <p><a href="Detail.php">Details</a></p>
-                        </div>
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 style="border-style: solid;padding:2.5px;" title="example mini Picture">
-
-                            <!--Bratrolle
-                            <p><a href="Detail.html">Details </a></p>-->
-                            <div style="color: grey">Bratrolle vergriffen</div>
+                            $query = 'SELECT * FROM Mahlzeiten 
+                            join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
+                                    JOIN Bilder ON hatBilder.BilderID = Bilder.ID;';
 
 
-                        </div>
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture">
+                        $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
 
-                            Krautsalat
-                            <p><a href="Detail.php">Details</a></p>
+                        if (mysqli_connect_errno()) {
+                            printf("Konnte nicht zur entfernten Datenbank verbinden: %s\n", mysqli_connect_error());
+                            exit();
+                        } else {
+                            // echo 'lief wohl gut';
+                        }
 
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture">
-
-                            Falafel
-                            <p><a href="Detail.php">Details</a></p>
-
-                        </div>
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture">
-
-                            Currywurst
-
-                            <p><a href="Detail.php">Details</a></p>
-                        </div>
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture">
-
-                            Käsestulle
-                            <p><a href="Detail.php">Details</a></p>
+                        if ($result = mysqli_query($link, $query)) {
 
 
-                        </div>
-                        <div class="col">
-                            <img alt="miniempty Picture" class="h-50" src="pictures/miniEmptyPicture.PNG"
-                                 title="example mini Picture">
+                                //echo $i;
+                                echo '<div class="row" style="margin-bottom: 1em;">';
+                                while (($row = mysqli_fetch_assoc($result))) {
+                                    // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
+                                    //echo '<li id="id-' . $row['Nummer'] . '">' . $row['Nutzername'] . $row['E-Mail'] . '</li>';
+                                    // echo $row['ID'];
+                                    //breite berechnen
 
-                            Spiegelei
-                            <p><a href="Detail.php">Details</a></p>
+
+                                    echo '<div class="col-3" style=" ">';
+                                    // <img alt="miniempty Picture"
+                                    //  src="pictures/miniEmptyPicture.PNG"
+                                    //title="example mini Picture" class="h-50 w-100">'
+                                    echo '<img alt="' . $row['Alt-Text'] .
+                                        '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;height: 63%" class=" w-100">'
 
 
-                        </div>
+                                        . $row['Name'] .
+                                        '<p><a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a></p>';
+                                    echo '</div>';
 
-                    </div>';
+
+
+                                }
+
+                                echo '</div>';
+
+
+                        }
+
+                        mysqli_close($link);
+
                     }
                     ?>
                 </div>
