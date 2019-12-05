@@ -2,6 +2,7 @@
 $dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
 $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
+$rest = substr($_SERVER['REQUEST_URI'], 4);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
                     <legend style="padding-bottom: 0.6em;">Speiseliste filtern</legend>
                     <select name="speiselistenKategorien" size="1" style="border-style:solid;border-color: black">
                         <optgroup label="Generell">
-                            <option value="0"> Alle zeigen</option>
+                            <option value="0" > Alle zeigen</option>
                         </optgroup>
 
 
@@ -75,16 +76,24 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
                                 $unterkatarray[] = $row;
                             }
                         }
-                        var_dump($unterkatarray);
+                        function sel($filterKategorie,$optionID){
+                            if($filterKategorie==$optionID)
+                            {
+                                return "selected";
+                            }
+                        }
+                        //var_dump($unterkatarray);
                         //echo $oberkatarray[0]['ID'];
                         //für jedes array der oberkategorie
                         foreach ($oberkatarray as $oberkategor) {
                             echo '<optgroup label="' . $oberkategor['Bezeichnung'] . '">';
                             foreach ($unterkatarray as $unterkategor) {
+                                $selekted=sel($_GET['speiselistenKategorien'],$unterkategor['ID']);
                                 //echo '<option>'.$unterkategor['hatOberkategorie'].'</option>';
                                 // echo '<option>'.$oberkategor['ID'].'</option>';
                                 if ($unterkategor['hatOberkategorie'] == $oberkategor['ID']) {
-                                    echo '<option value="' . $unterkategor['ID'] . '">' . $unterkategor['Bezeichnung'] . '</option>';
+                                    echo '<option  value="' . $unterkategor['ID'] . '"'.$selekted.'>' . $unterkategor['Bezeichnung'] .
+                                        '</option>';
                                 }
                             }
                             echo '</optgroup>';

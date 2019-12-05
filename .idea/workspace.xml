@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/snippets/NavOben.php" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/NavOben.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Produkte.php" beforeDir="false" afterPath="$PROJECT_DIR$/Produkte.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +89,7 @@
       <workItem from="1575401420430" duration="6116000" />
       <workItem from="1575450619511" duration="10120000" />
       <workItem from="1575490385847" duration="39000" />
-      <workItem from="1575570738583" duration="5030000" />
+      <workItem from="1575570738583" duration="6771000" />
     </task>
     <servers />
   </component>

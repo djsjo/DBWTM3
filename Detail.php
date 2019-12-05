@@ -2,6 +2,10 @@
 $dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
 $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
+
+
+// echo $rest;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
