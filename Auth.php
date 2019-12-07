@@ -9,6 +9,8 @@ if (empty($_POST['password']) or empty($_POST['user'])) {
 else {
     echo 'beide variablen wurden geliefert </br> ';
     echo $_POST['password'] . ' user ' . $_POST['user'];
+    $_SESSION['password']=$_POST['password'];
+    $_SESSION['user']=$_POST['user'];
 }
 
 ?>
