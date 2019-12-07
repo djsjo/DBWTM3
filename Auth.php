@@ -32,6 +32,10 @@ else {
         while ($row = mysqli_fetch_assoc($result)) {
         //hier kommen wir nur rein wenn user existiert
         echo 'user existiert';
+        if(password_verify($_SESSION['password'],$row['Hash1']))
+        {
+            echo 'passwort ist korrekt';
+        }
 
         }
     }
