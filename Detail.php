@@ -1,4 +1,6 @@
-<?php require __DIR__ . '/vendor/autoload.php';
+<?php
+if (!isset($_SESSION)) session_start();
+require __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
 $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
@@ -34,7 +36,7 @@ left JOIN Bilder ON hatBilder.BilderID = Bilder.ID
 left Join enthältZutaten on Mahlzeiten.ID=enthältZutaten.MahlzeitenID
 left Join Zutaten on enthältZutaten.ZutatenID=Zutaten.ID
 WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
-   // and Jahr=YEAR(CURDATE())
+    // and Jahr=YEAR(CURDATE())
     // ; Select ID,Name,Gastpreis from Mahlzeiten where id=\'.$übergebeneID
     $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
 
@@ -49,9 +51,9 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
     //gucken ob id gesetzt ist
     $row = mysqli_fetch_assoc($result);
     if (isset($_GET["id"])) {
-       // echo 'id gesetzt';
-       // echo ' übergebene ist' . $übergebeneID . '\n';
-       // echo 'rowid ist ' . $row['MahlzeitenID'] . " ";
+        // echo 'id gesetzt';
+        // echo ' übergebene ist' . $übergebeneID . '\n';
+        // echo 'rowid ist ' . $row['MahlzeitenID'] . " ";
         if ($übergebeneID == $row['MahlzeitenID']) {
 
             //wenn wir hier sind gibt es die auf jeden fall und sie ist gesetzt
@@ -102,13 +104,20 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
 
         <!--form für login-->
         <div class="col-3">
-           
-            <?php include('snippets/login.php')?>
 
-            <section>
-                Melden Sie sich jetzt an, um die wirklich viel günstigeren Preise für
-                Mitarbeiter oder Studenten zu sehen.
-            </section>
+            <?php
+
+            //var_dump($_SESSION);
+            if (isset($_SESSION['auth']) and $_SESSION['auth'] == true) {
+                //     echo 'hallo';
+                include('snippets/logout.php');
+            } else {
+                include('snippets/login.php');
+                echo 'tschüss';
+            }
+            ?>
+            <!--  echo '<meta content="3; url=./Detail.php?ID=1" http-equiv="refresh">'; -->
+
         </div>
 
         <!--falafelbild und preise-->
@@ -197,8 +206,7 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
                                     while ($row = mysqli_fetch_assoc($result2)) {
                                         if (isset($row['Zutatenname'])) {
                                             echo '<li>' . $row['Zutatenname'] . '</li>';
-                                        }
-                                        else echo '<li>Leider sind keine Zutaten angegeben</li>';
+                                        } else echo '<li>Leider sind keine Zutaten angegeben</li>';
 
                                     }
                                     echo '</ul>';

@@ -1,11 +1,18 @@
 <?php
-session_start();
+if(!isset($_SESSION))session_start();
 require __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
 $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 ?>
 <?php
+
+if(isset($_POST['logout'])and $_POST['logout']==true)
+{
+    echo 'nutzer will sich abmelden';
+    session_destroy();
+    echo '<meta content="0; url=./Detail.php?id=1" http-equiv="refresh">';
+}
 if (empty($_POST['password']) or empty($_POST['user'])) {
     echo 'eine der beiden variablen ist leer';
 
@@ -37,6 +44,8 @@ else {
             echo 'passwort ist korrekt';
             $_SESSION['user']=$row['Vorname'];
             $_SESSION['role']='hierkommtrollehin';
+            $_SESSION['auth']=true;
+            echo '<meta content="3; url=./Detail.php?id=1" http-equiv="refresh">';
 
         }
 
