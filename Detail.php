@@ -103,11 +103,11 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
         <!--form für login-->
         <div class="col-3">
             <!--form für login und text-->
-            <form id="login" name="login" style="margin-top: 2.7em;">
+            <form id="login" name="login" style="margin-top: 2.7em;" method="post" action="Auth.php">
                 <fieldset class="rahmenumform" form="login">
                     <legend style="width: auto;padding-bottom: 0.7em;">Login</legend>
-                    <label for="benutzer">
-                        <input id="benutzer" name="benutzer" placeholder="Benutzer"
+                    <label for="user">
+                        <input id="benutzer" name="user" placeholder="Benutzer"
                                style="border-style: solid;border-color: black;"
                                type="text">
                     </label>
