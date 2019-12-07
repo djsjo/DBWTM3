@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/Auth.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,9 +41,14 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MX" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\M3\snippets" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -90,7 +95,9 @@
       <workItem from="1575450619511" duration="10120000" />
       <workItem from="1575490385847" duration="39000" />
       <workItem from="1575570738583" duration="12500000" />
-      <workItem from="1575721451849" duration="895000" />
+      <workItem from="1575721451849" duration="10158000" />
+      <workItem from="1575740704111" duration="6485000" />
+      <workItem from="1575748473598" duration="829000" />
     </task>
     <servers />
   </component>
