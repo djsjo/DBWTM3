@@ -6,6 +6,9 @@ $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 ?>
 <?php
+function find_rolle($id){
+    echo 'sdlökjfdsa';
+}
 //user variable wird gesetzt
 
     $_SESSION['user'] = $_POST['user'];
@@ -80,14 +83,14 @@ else {
                 mysqli_query($link, $query);
 
 
-            } else {
+            } else {//passwor ist nicht korrekt
 
                     $_SESSION['pwfehlt'] = true;
 
             }
 
         }
-        echo '<meta content="10; url=./Detail.php?id=1" http-equiv="refresh">';
+       // echo '<meta content="0; url=./Detail.php?id=1" http-equiv="refresh">';
 
     }
 
@@ -96,7 +99,7 @@ else {
 
 
 }
-//echo '<meta content="3; url=./Detail.php?id=1" http-equiv="refresh">';
+echo '<meta content="0; url=./Detail.php?id=1" http-equiv="refresh">';
 
 ?>
 
