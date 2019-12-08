@@ -7,9 +7,9 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 ?>
 <?php
 //user variable wird gesetzt
-if (!isset($_SESSION['user'])) {
+
     $_SESSION['user'] = $_POST['user'];
-}
+
 
 //if user klickt "abmelden"
 if (isset($_POST['logout']) and $_POST['logout'] == true) {
@@ -47,28 +47,36 @@ else {
     //$nutzernamenarray = array();
     if ($result = mysqli_query($link, $query)) {
         //var_dump( $result->num_rows);
-        if ($result->num_rows) {
 
+        if (!$result->num_rows) {
+            echo 'user gibts nicht';
             $_SESSION['userfehlt'] = true;
 
         }
         while ($row = mysqli_fetch_assoc($result)) {
             //hier kommen wir nur rein wenn user existiert
             echo 'user existiert';
+            if(isset($_SESSION['userfehlt'])and $_SESSION['userfehlt']==true)
+            {
+                break;
+            }
+
+            //ist passwort korrekt?
             if (password_verify($_POST['password'], $row['Hash1'])) {
                 echo 'passwort ist korrekt';
-                $_SESSION['user'] = $row['Vorname'];
+                $_SESSION['username'] = $row['Vorname'];
                 $_SESSION['role'] = 'hierkommtrollehin';
                 $_SESSION['auth'] = true;
-                echo '<meta content="3; url=./Detail.php?id=1" http-equiv="refresh">';
+               // echo '<meta content="3; url=./Detail.php?id=1" http-equiv="refresh">';
 
             } else {
-                if (empty($_POST['password'])) {
-                    $_SESSION['userfehlt'] = true;
-                }
+
+                    $_SESSION['pwfehlt'] = true;
+
             }
 
         }
+        echo '<meta content="0; url=./Detail.php?id=1" http-equiv="refresh">';
 
     }
 

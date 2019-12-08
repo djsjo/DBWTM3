@@ -12,6 +12,7 @@
 
             }
             echo '" ';
+            //wenn user gesetzt wurde in form eintragen
             if(isset($_SESSION['user'])){
                 echo 'Value="'.$_SESSION['user'].'"';
             }
