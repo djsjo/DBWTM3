@@ -103,7 +103,7 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
     <div class="row" style="margin-top: 3em;">
 
         <!--form für login-->
-        <div class="col-3">
+        <div class="col-3 ">
 
             <?php
 
@@ -113,7 +113,7 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
                 include('snippets/logout.php');
             } else {
                 include('snippets/login.php');
-                echo 'tschüss';
+
             }
             ?>
             <!--  echo '<meta content="3; url=./Detail.php?ID=1" http-equiv="refresh">'; -->
