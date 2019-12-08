@@ -1,6 +1,14 @@
 <form id="login" name="login" style="margin-top: 2.7em;" method="post" action="Auth.php" autocomplete="on">
     <fieldset class="rahmenumform" form="login">
         <legend style="width: auto;padding-bottom: 0.7em;">Login</legend>
+        <?php
+        if(isset($_SESSION['userfehlt'])or isset($_SESSION['pwfehlt']))
+        {
+            echo '<section>Das hat nicht geklappt! Bitte versuchen Sie es erneut.</section>';
+        }
+        ?>
+
+
         <label for="user">
             <input  id="benutzer" name="user" placeholder="Benutzer"
                    style="border-style: solid;border-color: black;"
