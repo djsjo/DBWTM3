@@ -149,7 +149,26 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
                 <div class="col-3">
                     <!--gastpreise und button-->
                     <div style="margin-left: 6em;">
-                        <strong>Gast-</strong>Preis
+                        <strong>
+                            <?php
+                            if(isset($_SESSION['role'])){
+                            switch ($_SESSION['role']) {
+                                case "ma":
+                                    echo "Mitarbeiter-";
+                                    break;
+                                case "student":
+                                    echo "Studenten-";
+                                    break;
+                                case "gast":
+                                    echo "Gast-";
+                                    break;
+                                default:
+                                    echo "Gast-";
+                            }
+                            }
+                            else echo 'Gast-';
+                            ?>
+                        </strong>Preis
                         <h5 style="margin-left: 1.2em;"><?php echo $row['Gastpreis'] ?></h5>
                     </div>
                     <form>
