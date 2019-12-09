@@ -6,12 +6,14 @@ $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 ?>
 <?php
-function find_rolle($id){
+function find_rolle($id)
+{
     echo 'sdlökjfdsa';
 }
+
 //user variable wird gesetzt
 
-    $_SESSION['user'] = $_POST['user'];
+$_SESSION['user'] = $_POST['user'];
 
 
 //if user klickt "abmelden"
@@ -40,7 +42,8 @@ else {
 
 
     //check if pw ist korrekt
-    $query = 'SELECT Nutzername, `Hash1`,Vorname FROM Benutzer where Nutzername=\'' . $_POST['user'] . '\';'; // Ihre SQL Query aus HeidiSQL
+    $query = 'SELECT Nutzername, `Hash1`,Benutzer.Vorname,Benutzer.Nummer,rolle.benutzerRoll FROM Benutzer LEFT JOIN rolle ON Benutzer.Nummer=rolle.Benutzernummer where Nutzername=
+        \'' . $_POST['user'] . '\';'; // Ihre SQL Query aus HeidiSQL
     $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
 
     if (mysqli_connect_errno()) {
@@ -59,8 +62,7 @@ else {
         while ($row = mysqli_fetch_assoc($result)) {
             //hier kommen wir nur rein wenn user existiert
             echo 'user existiert';
-            if(isset($_SESSION['userfehlt'])and $_SESSION['userfehlt']==true)
-            {
+            if (isset($_SESSION['userfehlt']) and $_SESSION['userfehlt'] == true) {
                 break;
             }
 
@@ -68,29 +70,29 @@ else {
             if (password_verify($_POST['password'], $row['Hash1'])) {
                 echo 'passwort ist korrekt';
                 $_SESSION['username'] = $row['Vorname'];
-                $_SESSION['role'] = 'hierkommtrollehin';
+                $_SESSION['role'] = $row['benutzerRoll'];
                 //wenn auth= true ist benutzer angemeldet
                 $_SESSION['auth'] = true;
-               // echo '<meta content="3; url=./Detail.php?id=1" http-equiv="refresh">';
+                // echo '<meta content="3; url=./Detail.php?id=1" http-equiv="refresh">';
 
                 //setzen von time
                 //$_SESSION['lastLogin']=tim
-                $zeit=new DateTime();
-                $_SESSION['lastLogin']= $zeit->format('Y-m-d H:i:s');
+                $zeit = new DateTime();
+                $_SESSION['lastLogin'] = $zeit->format('Y-m-d H:i:s');
                 //var_dump($test);
-                $query='UPDATE Benutzer SET `LetzterLogin`=\''. $_SESSION['lastLogin'].'\' WHERE Nutzername=\''.$_POST['user'].'\';';
+                $query = 'UPDATE Benutzer SET `LetzterLogin`=\'' . $_SESSION['lastLogin'] . '\' WHERE Nutzername=\'' . $_POST['user'] . '\';';
                 //echo $query;
                 mysqli_query($link, $query);
 
 
             } else {//passwor ist nicht korrekt
 
-                    $_SESSION['pwfehlt'] = true;
+                $_SESSION['pwfehlt'] = true;
 
             }
 
         }
-       // echo '<meta content="0; url=./Detail.php?id=1" http-equiv="refresh">';
+        // echo '<meta content="0; url=./Detail.php?id=1" http-equiv="refresh">';
 
     }
 
