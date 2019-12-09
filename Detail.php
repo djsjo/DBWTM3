@@ -151,25 +151,43 @@ WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
                     <div style="margin-left: 6em;">
                         <strong>
                             <?php
-                            if(isset($_SESSION['role'])){
-                            switch ($_SESSION['role']) {
-                                case "ma":
-                                    echo "Mitarbeiter-";
-                                    break;
-                                case "student":
-                                    echo "Studenten-";
-                                    break;
-                                case "gast":
-                                    echo "Gast-";
-                                    break;
-                                default:
-                                    echo "Gast-";
-                            }
-                            }
-                            else echo 'Gast-';
+                            if (isset($_SESSION['role'])) {
+                                switch ($_SESSION['role']) {
+                                    case "ma":
+                                        echo "Mitarbeiter-";
+                                        break;
+                                    case "student":
+                                        echo "Studenten-";
+                                        break;
+                                    case "gast":
+                                        echo "Gast-";
+                                        break;
+                                    default:
+                                        echo "Gast-";
+                                }
+                            } else echo 'Gast-';
                             ?>
                         </strong>Preis
-                        <h5 style="margin-left: 1.2em;"><?php echo $row['Gastpreis'] ?></h5>
+                        <h5 style="margin-left: 1.2em;">
+                            <?php
+                            if (isset($_SESSION['role'])) {
+                                switch ($_SESSION['role']) {
+                                    case "ma":
+                                        echo $row['MA-Preis'];
+                                        break;
+                                    case "student":
+                                        echo $row['Studentpreis'];
+                                        break;
+                                    case "gast":
+                                        echo $row['Gastpreis'];
+                                        break;
+                                    default:
+                                        echo $row['Gastpreis'];
+                                }
+                            } //falls nicht angemeldet
+                            else  echo $row['Gastpreis'];
+                            ?>
+                        </h5>
                     </div>
                     <form>
                         <button id="vorbestellen" style="margin-top: 9em;margin-left: 3em;" type="button">
