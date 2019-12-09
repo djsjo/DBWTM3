@@ -76,6 +76,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $unterkatarray[] = $row;
                             }
                         }
+                        //markiert die auswahl die zuvor getroffen wurde
                         function sel($filterKategorie, $optionID)
                         {
                             if ($filterKategorie == $optionID) {
@@ -83,15 +84,13 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             }
                         }
 
-                        //var_dump($unterkatarray);
-                        //echo $oberkatarray[0]['ID'];
+
                         //für jedes array der oberkategorie
                         foreach ($oberkatarray as $oberkategor) {
                             echo '<optgroup label="' . $oberkategor['Bezeichnung'] . '">';
                             foreach ($unterkatarray as $unterkategor) {
                                 $selekted = sel($_GET['speiselistenKategorien'], $unterkategor['ID']);
-                                //echo '<option>'.$unterkategor['hatOberkategorie'].'</option>';
-                                // echo '<option>'.$oberkategor['ID'].'</option>';
+
                                 if ($unterkategor['hatOberkategorie'] == $oberkategor['ID']) {
                                     echo '<option  value="' . $unterkategor['ID'] . '"' . $selekted . '>' . $unterkategor['Bezeichnung'] .
                                         '</option>';
