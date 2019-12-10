@@ -170,7 +170,10 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             //var_dump($avail);
 
                             //wenn avail query verändern
-                            $query = 'SELECT *,MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan FROM Mahlzeiten 
+                            $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
+                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID,Zutaten.ID,
+                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan
+                                     FROM Mahlzeiten 
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
@@ -189,7 +192,10 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $query = $query . ' having MahlzeitVeggie=1 ';
                             }
                             if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
-                                $query = $query . ' having MahlzeitVegan=1';
+                                if(strpos($query,"having")==false){
+                                    $query=$query.' having ';
+                                }else $query=$query.' and ';
+                                $query = $query . '  MahlzeitVegan=1';
                             }
                             $query = $query . ' ;';
                             echo $query;
@@ -199,7 +205,10 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
 
 
-                            $query = 'SELECT *,MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan FROM Mahlzeiten 
+                            $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
+                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID,Zutaten.ID,
+                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan
+                                     FROM Mahlzeiten 
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
@@ -221,7 +230,10 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $query = $query . ' having MahlzeitVeggie=1 ';
                             }
                             if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
-                                $query = $query . ' having MahlzeitVegan=1 ';
+                                if(strpos($query,"having")==false){
+                                    $query=$query.' having ';
+                                }else $query=$query.' and ';
+                                $query = $query . '  MahlzeitVegan=1 ';
                             }
 
                             $query = $query . ' ;';
@@ -288,16 +300,33 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                     //weder avail noch limit gesetzt
                     else {
                         echo 'gehen in fall dass weder limit noch avila gesetzte ist ';
-                        $query = 'SELECT * FROM Mahlzeiten 
-                            join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
-                                    JOIN Bilder ON hatBilder.BilderID = Bilder.ID
-                                    join Kategorien on Mahlzeiten.Kategorie=Kategorien.ID
+                        $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
+                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID,Zutaten.ID,
+                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan 
+                                    FROM Mahlzeiten 
+                                        join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
+                                        JOIN Bilder ON hatBilder.BilderID = Bilder.ID
+                                        JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
+                                        LEFT JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+		                	            left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID
                                     ';
 
                         if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                             $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                         }
-                        $query = $query . ';';
+                        $query = $query . ' GROUP BY Mahlzeiten.ID ';
+                        if (isset($_GET['veggie']) and $_GET['veggie'] != 0) {
+                            $query = $query . ' having MahlzeitVeggie=1 ';
+                        }
+                        if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
+                            if(strpos($query,"having")==false){
+                                $query=$query.' having ';
+                            }else $query=$query.' and ';
+                            $query = $query . '  MahlzeitVegan=1 ';
+                        }
+
+                        $query = $query . ' ;';
+
                         $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
 
                         if (mysqli_connect_errno()) {
