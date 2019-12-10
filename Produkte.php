@@ -199,29 +199,29 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
 
 
-                            $query = 'SELECT *,MIN(Bio) AS MahlzeitBio,MIN(Vegan) AS MahlzeitVegan FROM Mahlzeiten
-                            join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
-                                    JOIN Bilder ON hatBilder.BilderID = Bilder.ID
-                                    JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
-                                    LEFT JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
-		                	        left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID 
-                                    ';
+                            $query = 'SELECT *,MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan FROM Mahlzeiten 
+                                        join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
+                                        JOIN Bilder ON hatBilder.BilderID = Bilder.ID
+                                        JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
+                                        LEFT JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+		                	            left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID
+		                	            
+                                      ';
                             //echo 'avail geht nicht';
 
-                            
 
-                            $whereExists = false;
+
+
                             if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
-
                                 $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
 
-                            $query = $query . ' GROUP BY Mahlzeiten.ID ;';
+                            $query = $query . ' GROUP BY Mahlzeiten.ID ';
                             if (isset($_GET['veggie']) and $_GET['veggie'] != 0) {
                                 $query = $query . ' having MahlzeitVeggie=1 ';
                             }
                             if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
-                                $query = $query . ' having MahlzeitVegan=1';
+                                $query = $query . ' having MahlzeitVegan=1 ';
                             }
 
                             $query = $query . ' ;';
