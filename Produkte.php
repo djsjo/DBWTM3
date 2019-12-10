@@ -110,14 +110,14 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
 
                         <label><input name="avail" type="checkbox" value="1"
-                                      <?php if(isset($_GET['avail']))echo 'checked';?>
+                                <?php if (isset($_GET['avail'])) echo 'checked'; ?>
                             > nur verfügbare</label>
                         <label><input name="veggie" type="checkbox" value="1"
-                                <?php if(isset($_GET['veggie']))echo 'checked';?>
+                                <?php if (isset($_GET['veggie'])) echo 'checked'; ?>
                             > nur vegetarische</label>
 
-                        <label><input  name="vegan" type="checkbox" value="1"
-                                <?php if(isset($_GET['vegan']))echo 'checked';?>
+                        <label><input name="vegan" type="checkbox" value="1"
+                                <?php if (isset($_GET['vegan'])) echo 'checked'; ?>
                             > nur vegane</label>
 
                     </fieldset>
@@ -135,17 +135,15 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
             <div class="row" style="margin-bottom: 2em;">
                 <div class="col">
                     <h2>Verfügbare Speisen
-                    <?php
-                    if(isset($_GET['speiselistenKategorien'])and $_GET['speiselistenKategorien']!=0)
-                    {
-                        foreach ($unterkatarray as $unterkategor){
-                            if($_GET['speiselistenKategorien']==$unterkategor['ID'])
-                            echo '('.$unterkategor['Bezeichnung'].')';
-                        }
+                        <?php
+                        if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
+                            foreach ($unterkatarray as $unterkategor) {
+                                if ($_GET['speiselistenKategorien'] == $unterkategor['ID'])
+                                    echo '(' . $unterkategor['Bezeichnung'] . ')';
+                            }
 
-                    }
-                    else  echo '(Alle)';
-                    ?>
+                        } else  echo '(Alle)';
+                        ?>
 
                     </h2>
                 </div>
@@ -158,45 +156,77 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                     <?php
                     //fall mindestens limit oder avail angegeben wurden
                     if (isset($_GET['limit']) || isset($_GET['avail'])) {
+                        echo 'gehen in besonderen fall rein';
                         $limit = 100;
                         //$avail=false;
 
                         // echo 'ausgabe geht';
 
                         //setzen der einzelnen variablen falls gesetzt
-
+                        //avail gesetzt
                         if (isset($_GET['avail'])) {
                             $avail = $_GET['avail'];
-                            //echo 'avail geht';
+                            echo 'avail geht';
                             //var_dump($avail);
 
                             //wenn avail query verändern
-                            $query = 'SELECT * FROM Mahlzeiten 
+                            $query = 'SELECT *,MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan FROM Mahlzeiten 
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
-                                         where Vorrat >0'; // Ihre SQL Query aus HeidiSQL
+                                        LEFT JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+		                	            left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID
+		                	            
+                                      where Vorrat >0'; // Ihre SQL Query aus HeidiSQL
 
                             if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
+                                echo 'geht in speiselisten bereich';
                                 $query = $query . ' and Kategorien.ID=' . $_GET['speiselistenKategorien'];
-                            }
-                            $query = $query . ';';
 
+                            }
+                            $query = $query . ' GROUP BY Mahlzeiten.ID ';
+                            if (isset($_GET['veggie']) and $_GET['veggie'] != 0) {
+                                $query = $query . ' having MahlzeitVeggie=1 ';
+                            }
+                            if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
+                                $query = $query . ' having MahlzeitVegan=1';
+                            }
+                            $query = $query . ' ;';
+                            echo $query;
+
+                            //avail nicht gesetzt aber limit
                         } else {
-                            $query = 'SELECT * FROM Mahlzeiten 
+
+
+
+                            $query = 'SELECT *,MIN(Bio) AS MahlzeitBio,MIN(Vegan) AS MahlzeitVegan FROM Mahlzeiten
                             join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                     JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
+                                    LEFT JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
+		                	        left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID 
                                     ';
                             //echo 'avail geht nicht';
 
+                            
 
+                            $whereExists = false;
                             if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
+
                                 $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
-                            $query = $query . ";";
 
+                            $query = $query . ' GROUP BY Mahlzeiten.ID ;';
+                            if (isset($_GET['veggie']) and $_GET['veggie'] != 0) {
+                                $query = $query . ' having MahlzeitVeggie=1 ';
+                            }
+                            if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
+                                $query = $query . ' having MahlzeitVegan=1';
+                            }
+
+                            $query = $query . ' ;';
                         }
+
 
                         // echo $query;
                         //echo 'limit wäre ohne gesetzt zu sein' . $limit;
@@ -219,7 +249,9 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             $i = 1;
                             //echo $i;
                             echo '<div class="row" style="margin-bottom: 1em;">';
-                            if($result->num_rows==0){echo 'Es wurde nix gefunden';}
+                            if ($result->num_rows == 0) {
+                                echo 'Es wurde nix gefunden';
+                            }
                             //var_dump($result->num_rows);
                             while (($row = mysqli_fetch_assoc($result)) && ($i <= $limit)) {
                                 // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
@@ -252,8 +284,10 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         mysqli_close($link);
 
 
-                    } else {
-
+                    }
+                    //weder avail noch limit gesetzt
+                    else {
+                        echo 'gehen in fall dass weder limit noch avila gesetzte ist ';
                         $query = 'SELECT * FROM Mahlzeiten 
                             join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                     JOIN Bilder ON hatBilder.BilderID = Bilder.ID
@@ -278,7 +312,9 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                             //echo $i;
                             echo '<div class="row" style="margin-bottom: 1em;">';
-                           if($result->num_rows==0){echo 'Es wurde nix gefunden';}
+                            if ($result->num_rows == 0) {
+                                echo 'Es wurde nix gefunden';
+                            }
                             //var_dump($result->num_rows);
                             while (($row = mysqli_fetch_assoc($result))) {
                                 // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
