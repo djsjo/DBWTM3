@@ -192,9 +192,9 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $query = $query . ' having MahlzeitVeggie=1 ';
                             }
                             if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
-                                if(strpos($query,"having")==false){
-                                    $query=$query.' having ';
-                                }else $query=$query.' and ';
+                                if (strpos($query, "having") == false) {
+                                    $query = $query . ' having ';
+                                } else $query = $query . ' and ';
                                 $query = $query . '  MahlzeitVegan=1';
                             }
                             $query = $query . ' ;';
@@ -202,7 +202,6 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                             //avail nicht gesetzt aber limit
                         } else {
-
 
 
                             $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
@@ -219,8 +218,6 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             //echo 'avail geht nicht';
 
 
-
-
                             if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                                 $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
                             }
@@ -230,9 +227,9 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $query = $query . ' having MahlzeitVeggie=1 ';
                             }
                             if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
-                                if(strpos($query,"having")==false){
-                                    $query=$query.' having ';
-                                }else $query=$query.' and ';
+                                if (strpos($query, "having") == false) {
+                                    $query = $query . ' having ';
+                                } else $query = $query . ' and ';
                                 $query = $query . '  MahlzeitVegan=1 ';
                             }
 
@@ -277,11 +274,23 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 //  src="pictures/miniEmptyPicture.PNG"
                                 //title="example mini Picture" class="h-50 w-100">'
                                 echo '<img alt="' . $row['Alt-Text'] .
-                                    '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;height: 63%" class=" w-100">'
+                                    '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;';
+
+
+                                if (!isset($row['Vorrat']) or $row['Vorrat'] <= 0) {
+                                    echo ' -webkit-filter: grayscale(100%); 
+                                 filter: grayscale(100%);';
+                                }
+
+                                echo ' height: 63%" class=" w-100">'
 
 
                                     . $row['Name'] .
-                                    '<p><a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a></p>';
+                                    '<p>
+ <a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a>
+ 
+ 
+ </p>';
                                 echo '</div>';
 
 
@@ -296,8 +305,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         mysqli_close($link);
 
 
-                    }
-                    //weder avail noch limit gesetzt
+                    } //weder avail noch limit gesetzt
                     else {
                         echo 'gehen in fall dass weder limit noch avila gesetzte ist ';
                         $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
@@ -319,9 +327,9 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             $query = $query . ' having MahlzeitVeggie=1 ';
                         }
                         if (isset($_GET['vegan']) and $_GET['vegan'] != 0) {
-                            if(strpos($query,"having")==false){
-                                $query=$query.' having ';
-                            }else $query=$query.' and ';
+                            if (strpos($query, "having") == false) {
+                                $query = $query . ' having ';
+                            } else $query = $query . ' and ';
                             $query = $query . '  MahlzeitVegan=1 ';
                         }
 
@@ -357,11 +365,23 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 //  src="pictures/miniEmptyPicture.PNG"
                                 //title="example mini Picture" class="h-50 w-100">'
                                 echo '<img alt="' . $row['Alt-Text'] .
-                                    '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;height: 63%" class=" w-100">'
+                                    '"class="w-100" src="data:image/png;base64,' . base64_encode($row["Binärdaten"]) . '"style="overflow: hidden;';
 
 
-                                    . $row['Name'] .
-                                    '<p><a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a></p>';
+                                if (!isset($row['Vorrat']) or $row['Vorrat'] <= 0) {
+                                    echo ' -webkit-filter: grayscale(100%); 
+                                 filter: grayscale(100%);';
+                                }
+
+                                echo ' height: 63% " class=" w-100">'
+
+
+                                    . $row['Name'];
+
+                                if (!isset($row['Vorrat']) or $row['Vorrat'] <= 0) {
+                                    echo '<p>Details</p>';
+                                }
+                                else echo '<p><a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a></p>';
                                 echo '</div>';
 
 
