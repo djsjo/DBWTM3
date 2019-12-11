@@ -36,6 +36,7 @@ left JOIN Bilder ON hatBilder.BilderID = Bilder.ID
 left Join enthältZutaten on Mahlzeiten.ID=enthältZutaten.MahlzeitenID
 left Join Zutaten on enthältZutaten.ZutatenID=Zutaten.ID
 WHERE Mahlzeiten.id=' . $übergebeneID . ';'; // Ihre SQL Query aus HeidiSQL
+    echo $query;
     // and Jahr=YEAR(CURDATE())
     // ; Select ID,Name,Gastpreis from Mahlzeiten where id=\'.$übergebeneID
     $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));

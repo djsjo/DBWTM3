@@ -170,10 +170,11 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                             //var_dump($avail);
 
                             //wenn avail query verändern
-                            $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
-                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID,Zutaten.ID,
-                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan
-                                     FROM Mahlzeiten 
+                            $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID as MahlzeitenID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,Bilder.ID,`Alt-Text`,`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
+                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID AS KategorienID
+								,Zutaten.ID AS ZutatenID,
+                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan 
+                                    FROM Mahlzeiten 
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
@@ -204,10 +205,11 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         } else {
 
 
-                            $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
-                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID,Zutaten.ID,
-                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan
-                                     FROM Mahlzeiten 
+                            $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID as MahlzeitenID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,Bilder.ID,`Alt-Text`,`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
+                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID AS KategorienID
+								,Zutaten.ID AS ZutatenID,
+                                    MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan 
+                                    FROM Mahlzeiten 
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
@@ -287,10 +289,10 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                                     . $row['Name'] .
                                     '<p>
- <a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a>
+                                <a href="Detail.php?id=' . $row['MahlzeitenID'] . '">Details</a>
  
  
- </p>';
+                                </p>';
                                 echo '</div>';
 
 
@@ -308,16 +310,16 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                     } //weder avail noch limit gesetzt
                     else {
                         echo 'gehen in fall dass weder limit noch avila gesetzte ist ';
-                        $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,hatBilder.MahlzeitenID,enthältZutaten.MahlzeitenID,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
-                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID,Zutaten.ID,
+                        $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID as MahlzeitenID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
+                        hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID AS KategorienID
+								,Zutaten.ID AS ZutatenID,
                                     MIN(Vegetarisch) AS MahlzeitVeggie,MIN(Vegan) AS MahlzeitVegan 
                                     FROM Mahlzeiten 
                                         join hatBilder on Mahlzeiten.ID = hatBilder.MahlzeitenID 
                                         JOIN Bilder ON hatBilder.BilderID = Bilder.ID
                                         JOIN Kategorien ON Mahlzeiten.Kategorie = Kategorien.ID
                                         LEFT JOIN enthältZutaten ON Mahlzeiten.ID=enthältZutaten.MahlzeitenID
-		                	            left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID
-                                    ';
+		                	            left JOIN Zutaten ON enthältZutaten.ZutatenID=Zutaten.ID';
 
                         if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
                             $query = $query . ' where Kategorien.ID=' . $_GET['speiselistenKategorien'];
@@ -347,18 +349,18 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         if ($result = mysqli_query($link, $query)) {
 
 
-                            //echo $i;
+                           // echo $query;
                             echo '<div class="row" style="margin-bottom: 1em;">';
                             if ($result->num_rows == 0) {
                                 echo 'Es wurde nix gefunden';
                             }
-                            //var_dump($result->num_rows);
+
                             while (($row = mysqli_fetch_assoc($result))) {
                                 // $row['ID'] und $row['Name'] stehen aus der Query zur Verfügung
                                 //echo '<li id="id-' . $row['Nummer'] . '">' . $row['Nutzername'] . $row['E-Mail'] . '</li>';
                                 // echo $row['ID'];
                                 //breite berechnen
-
+                               // var_dump($row);
 
                                 echo '<div class="col-3" style=" ">';
                                 // <img alt="miniempty Picture"
