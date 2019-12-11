@@ -1,15 +1,7 @@
-<!-- View Start -->
-<div class="row">
-	<div class="col">
- <h2><?php echo static::e($headline); ?></h2>
- <p>Einfache Iteration durch ein Array. So könnten Sie auch verschachtelte Arrays durchgehen (weitere <code>@foreach</code>-Anweisungen)</p>
+<?php $_shouldextend[1]=1; ?>;
 
- <dl>
- <?php $__currentLoopData = $defs; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $def): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
- <dt><?php echo static::e($def["label"]); ?></dt>
- <dd><?php echo static::e($def["term"]); ?></dd>
- <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
- </dl>
-	</div>
-</div>
-<!-- View End -->
+<?php $this->startSection('content'); ?>
+
+ hier steht iwelcher kontent
+<?php $this->stopSection(); ?>
+<?php if (@$_shouldextend[1]) { echo $this->runChild('layouts.all'); } ?>

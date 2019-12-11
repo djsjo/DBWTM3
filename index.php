@@ -59,6 +59,10 @@ echo"	</head>
 		</header>
 		</div>";
 
+
+
+
+
 echo $blade->run("deflist",array("defs"=>$defs,"headline" => "Defnitionen")); // übergibt das $defs Array als Variable defs an die View views/deflist.blade.php
 
 echo $blade->run("fragment"); // weiteres statisches HTML Fragment, das Sie vielleicht einbinden möchten
