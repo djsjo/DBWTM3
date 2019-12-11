@@ -1,6 +1,7 @@
 {
     "name": "ds7970s/m3",
     "require": {
-        "vlucas/phpdotenv": "^3.6"
+        "vlucas/phpdotenv": "^3.6",
+        "eftec/bladeone": "^3.31"
     }
 }
