@@ -1,0 +1,17 @@
+<!-- View Start -->
+<div class="row">
+	<div class="col">
+ <!-- falls $headline nicht an die View übergeben wurde 
+  den Text 'Einfach eine Gallerie' anzeigen -->
+ <h2><?php echo static::e(isset($headline) ? $headline : 'Einfach eine Gallerie'); ?></h2> 
+ <ul>
+ <?php for($i = 0; $i < 3; $i++): ?>
+ <li id="pic-<?php echo static::e($i); ?>">
+ <p> <?php echo static::e($labels[$i]); ?> </p>	
+ <img class="img-fluid" src="<?php echo static::e($media[$i]); ?> " alt="<?php echo static::e($labels[$i]); ?> " />
+ </li>
+ <?php endfor; ?>
+ </ul>
+	</div>
+</div>
+<!-- View End -->
