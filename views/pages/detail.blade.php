@@ -2,7 +2,7 @@
 @extends('layouts.all');
 
 @section('content')
-
+@section('title',$title)
 
 
     <!--main part-->
