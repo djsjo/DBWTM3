@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/includes/svlogin.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/pages/detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/svlogin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetailBlade.php" beforeDir="false" afterPath="$PROJECT_DIR$/DetailBlade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetailCopyzurBearbeitung.php" beforeDir="false" afterPath="$PROJECT_DIR$/DetailCopyzurBearbeitung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/a7d75a26b97dad9011569481802ab4ab28eee416.bladec" beforeDir="false" afterPath="$PROJECT_DIR$/cache/a7d75a26b97dad9011569481802ab4ab28eee416.bladec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/all.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/all.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/detail.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/svlogin.blade.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +128,7 @@
       <workItem from="1576017350396" duration="1332000" />
       <workItem from="1576070850278" duration="10306000" />
       <workItem from="1576087483425" duration="31000" />
-      <workItem from="1576162821449" duration="6432000" />
+      <workItem from="1576162821449" duration="6840000" />
     </task>
     <servers />
   </component>
