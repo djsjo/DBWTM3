@@ -42,37 +42,39 @@ array_push($labels, "Stéphane Mingot @smingot");
  * beginnen. Alle Daten liegen schon vor, d.h. keine DB-Zugriffe mehr
  */
 
-echo "<!DOCTYPE html>
-<html lang='de'>
-	<head>
-		<title>$title</title>
-";
+//echo "<!DOCTYPE html>
+//<html lang='de'>
+//	<head>
+//		<title>$title</title>
+//";
 
-echo $blade->run("static.css"); // statisches HTML Fragment aus dem Ordner views/static/ namens css.blade.php (lesen Sie aber auch zu den Möglichkeiten von View Layouts!)
+//echo $blade->run("static.css"); // statisches HTML Fragment aus dem Ordner views/static/ namens css.blade.php (lesen Sie aber auch zu den Möglichkeiten von View Layouts!)
 
-echo"	</head>
-	<body>
-		<div class='container'>
-		<div class='row'>
-		<header class='col'>
-			<p>Hier könnte Ihre Webseite existieren</p>
-		</header>
-		</div>";
-
-
+//echo"	</head>
+//	<body>
+///		<div class='container'>
+	//	<div class='row'>
+	//	<header class='col'>
+	//		<p>Hier könnte Ihre Webseite existieren</p>
+	//	</header>
+	//	</div>";
 
 
 
-echo $blade->run("deflist",array("defs"=>$defs,"headline" => "Defnitionen")); // übergibt das $defs Array als Variable defs an die View views/deflist.blade.php
-
-echo $blade->run("fragment"); // weiteres statisches HTML Fragment, das Sie vielleicht einbinden möchten
-
-echo $blade->run("gallerie",array("media"=>$media,"labels"=>$labels,"caption"=>$caption));
-
-echo "<footer><p>Sie sehen, mit der View-Engine können Sie jede Menge Code auslagern und in den dedizierten Views eine spezialisierte Syntax verwenden.</p></footer>";
 
 
-echo "
-		</div>
-	</body>
-</html>";
+//echo $blade->run("deflist",array("defs"=>$defs,"headline" => "Defnitionen")); // übergibt das $defs Array als Variable defs an die View views/deflist.blade.php
+
+//echo $blade->run("fragment"); // weiteres statisches HTML Fragment, das Sie vielleicht einbinden möchten
+
+//echo $blade->run("gallerie",array("media"=>$media,"labels"=>$labels,"caption"=>$caption));
+
+//echo "<footer><p>Sie sehen, mit der View-Engine können Sie jede Menge Code auslagern und in den dedizierten Views eine spezialisierte Syntax verwenden.</p></footer>";
+
+echo $blade->run("pages.detail",array("hallo"=>$defs));
+
+
+//echo "
+//		</div>
+//	</body>
+//</html>";

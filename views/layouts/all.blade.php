@@ -30,6 +30,7 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
     @yield('content')
 
     <?php include('snippets/NavUnten.php'); ?>
+
 </div>
 
 <!-- Optional JavaScript -->
