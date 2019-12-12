@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Detail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DetailBlade.php" beforeDir="false" afterPath="$PROJECT_DIR$/DetailBlade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DetailCopyzurBearbeitung.php" beforeDir="false" afterPath="$PROJECT_DIR$/DetailCopyzurBearbeitung.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/c5fdcb56f0c34bbf8e31ee6e45076f26a83c109f.bladec" beforeDir="false" afterPath="$PROJECT_DIR$/cache/c5fdcb56f0c34bbf8e31ee6e45076f26a83c109f.bladec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/deflist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/deflist.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pages/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/detail.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -130,7 +133,7 @@
       <workItem from="1576017350396" duration="1332000" />
       <workItem from="1576070850278" duration="10306000" />
       <workItem from="1576087483425" duration="31000" />
-      <workItem from="1576162821449" duration="8120000" />
+      <workItem from="1576162821449" duration="11782000" />
     </task>
     <servers />
   </component>

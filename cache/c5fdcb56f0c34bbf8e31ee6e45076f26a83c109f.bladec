@@ -2,21 +2,21 @@
 <?php $_shouldextend[1]=1; ?>;
 
 <?php $this->startSection('content'); ?>
+<?php $this->startSection('title',$row['Name']); ?>
 
 
+<!--main part-->
+<div class="row" style="margin-top: 3em;">
 
- <!--main part-->
- <div class="row" style="margin-top: 3em;">
-
- <?php /*<?php echo $this->runChild('layouts.svlogin'); ?>*/ ?>
+<?php /*<?php echo $this->runChild('layouts.svlogin'); ?>*/ ?>
 <?php echo $this->runChild('includes.svlogin'); ?>
 
 
- <!--falafelbild und preise-->
+<!--falafelbild und preise-->
 
  <div class="col">
  <div class="row" style="margin-bottom:2em ;">
- <div class="col"><h4>Details für <?php echo $row['Name']; ?></h4></div>
+ <div class="col"><h4>Details für <?php echo static::e($row['Name']); ?></h4></div>
  </div>
  <div class="row">
  <!--produktbild und details-->
@@ -121,7 +121,8 @@
  <div class="tab-content" id="myTabContent" style="border-style: solid">
  <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home"
  role="tabpanel">
- <p><?php echo $row['Beschreibung'] ?>
+ <p><?php echo static::e($row['Beschreibung']); ?>
+
  <a href="Impressum.php">Krautsalat</a></p>
  </div>
 
@@ -132,9 +133,9 @@
  <?php
  //result variable wurde schon einmal ausgelesen daher eine zweite result
  echo '<ul>';
- while ($row = mysqli_fetch_assoc($result2)) {
- if (isset($row['Zutatenname'])) {
- echo '<li>' . $row['Zutatenname'] . '</li>';
+ foreach($zutatenrows as $zutatenrow) {
+ if (isset($zutatenrow['Zutatenname'])) {
+ echo '<li>' . $zutatenrow['Zutatenname'] . '</li>';
  } else echo '<li>Leider sind keine Zutaten angegeben</li>';
 
  }
@@ -244,7 +245,7 @@
 
  </div>
 
- </div>
+</div>
 
 <?php $this->stopSection(); ?>
 <?php if (@$_shouldextend[1]) { echo $this->runChild('layouts.all'); } ?>
