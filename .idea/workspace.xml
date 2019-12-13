@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DetailOhneBlade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DetailBlade.php" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/includes/NavOben.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/includes/NavUnten.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/all.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/all.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,22 +57,22 @@
     <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/includes" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\M3\views\includes" />
+      <recent name="C:\xampp\htdocs\M3\views\pages" />
+      <recent name="C:\xampp\htdocs\M3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\M3\views\pages" />
       <recent name="C:\xampp\htdocs\M3\views\includes" />
       <recent name="C:\xampp\htdocs\M3\views\layouts" />
       <recent name="C:\xampp\htdocs\M3\snippets" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\M3\views\pages" />
-      <recent name="C:\xampp\htdocs\M3\views\includes" />
-      <recent name="C:\xampp\htdocs\M3" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -131,7 +130,7 @@
       <workItem from="1576070850278" duration="10306000" />
       <workItem from="1576087483425" duration="31000" />
       <workItem from="1576162821449" duration="12325000" />
-      <workItem from="1576247959367" duration="239000" />
+      <workItem from="1576247959367" duration="541000" />
     </task>
     <servers />
   </component>

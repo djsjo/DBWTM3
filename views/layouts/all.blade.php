@@ -26,10 +26,12 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 </head>
 <body>
 <div class="container">
-    <?php include('snippets/NavOben.php'); ?>
+    
+    @include('includes.NavOben')
     @yield('content')
 
-    <?php include('snippets/NavUnten.php'); ?>
+
+    @include('includes.NavUnten')
 
 </div>
 
