@@ -22,36 +22,36 @@
         @if (!empty($zutatenrows))
             @foreach ($zutatenrows as $zutatenrow)
 
-            {{--<li id="id-' .$zutatenrow['Nummer']. '">' .$zutatenrow['Nutzername'].$row['E-Mail'].'</li>';--}}
+                {{--<li id="id-' .$zutatenrow['Nummer']. '">' .$zutatenrow['Nutzername'].$row['E-Mail'].'</li>';--}}
 
-            {!! '<tr>
+                {!! '<tr>
 
-                <th><i class="fas fa-barcode"></i><a href="https://www.google.com/search?q='.$zutatenrow['Name'].'"
-                                                     title="Suchen Sie nach '.$zutatenrow['Name'].' im Web"> '.
-                    $zutatenrow['Name'].'</a>'
+                    <th><i class="fas fa-barcode"></i><a href="https://www.google.com/search?q='.$zutatenrow['Name'].'"
+                                                         title="Suchen Sie nach '.$zutatenrow['Name'].' im Web"> '.
+                        $zutatenrow['Name'].'</a>'
 
-                    !!}
+                        !!}
 
-            @if ($zutatenrow['Bio'] == true)
-                {!! '<img alt="bio label" src="pictures/bio.svg" title="bio label"  Style="img" width="20
-                height="20">'
-                 !!}
-            @endif
+                @if ($zutatenrow['Bio'] == true)
+                    {!! '<img alt="bio label" src="pictures/bio.svg" title="bio label"  Style="img" width="20
+                    height="20">'
+                     !!}
+                @endif
 
 
-            {!! '</th>
-            <td>' !!}
+                {!! '</th>
+                <td>' !!}
 
-            @if ($zutatenrow['Bio'] == true)
-                {!!  '<i class="far fa-check-circle"></i>'!!}
-            @else
+                @if ($zutatenrow['Bio'] == true)
+                    {!!  '<i class="far fa-check-circle"></i>'!!}
+                @else
 
-                {!!  '<i class="far fa-circle"></i>'!!}
+                    {!!  '<i class="far fa-circle"></i>'!!}
 
-            @endif
-            {!!
-            '</td>
-            <td>'!!}
+                @endif
+                {!!
+                '</td>
+                <td>'!!}
 
                 @if ($zutatenrow['Vegan'] == true)
                     {!! '<i class="far fa-check-circle"></i>'!!}
@@ -67,7 +67,7 @@
                 @if ($zutatenrow['Vegetarisch'] == true)
                     {!! '<i class="far fa-check-circle"></i>'!!}
                 @else
-                {!! '<i class="far fa-circle"></i>'!!}
+                    {!! '<i class="far fa-circle"></i>'!!}
 
                 @endif
 
