@@ -55,7 +55,7 @@ if (mysqli_connect_errno()) {
     <table class="table">
         <thead>
         <tr>
-           // <th scope="col">ID</th>
+           <!-- <th scope="col">ID</th> -->
             <th scope="col">Zutat</th>
             <th scope="col">Bio?</th>
             <th scope="col">Vegan?</th>
@@ -74,13 +74,13 @@ if (mysqli_connect_errno()) {
 
                 echo '
                  <tr>
-                <th scope="row">' . $row['ID'] . '</th>
-                <td><i class="fas fa-barcode"></i><a href="https://www.google.com/search?q='.$row['Name'].'" title="Suchen Sie nach '.$row['Name'].' im Web"</a>'. $row['Name'].'</form>';
+              <!--  <th scope="row">' . $row['ID'] . '</th> -->
+                <th><i class="fas fa-barcode"></i><a href="https://www.google.com/search?q='.$row['Name'].'" title="Suchen Sie nach '.$row['Name'].' im Web"</a>'. $row['Name'].'</form>';
                 if ($row['Bio'] == true) {
                     echo '<img alt="bio label" src="pictures/bio.svg" title="bio label" Style="img width="20 height="20"> ';
                 }
 
-                echo '</td> <td>';
+                echo '</th> <td>';
 
                 if ($row['Bio'] == true) {
                     echo '<i class="far fa-check-circle"></i>';
