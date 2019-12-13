@@ -22,7 +22,8 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
     <!--stylesheet-->
     <link href="allgemeinStyle.css" rel="stylesheet">
-    <title>Detail @yield('title')</title>
+    @yield('specialCss')
+    <title> @yield('title')</title>
 </head>
 <body>
 <div class="container">

@@ -24,7 +24,7 @@ $dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
     <title>Mensa</title>
 </head>
 <body>
-<?php include('snippets/NavOben.php'); ?>
+
 
 
 <?php
@@ -35,7 +35,7 @@ if (mysqli_connect_errno()) {
     printf("Konnte nicht zur entfernten Datenbank verbinden: %s\n", mysqli_connect_error());
     exit();
 } else {
-    echo 'lief wohl gut';
+  //  echo 'lief wohl gut';
 }
 
 
@@ -49,7 +49,7 @@ if (mysqli_connect_errno()) {
 
 ?>
 <div class="container">
-
+    <?php include('snippets/NavOben.php'); ?>
 
     <h1>Zutatenliste</h1>
     <table class="table">
@@ -64,7 +64,7 @@ if (mysqli_connect_errno()) {
         </tr>
         </thead>
         <tbody>
-        // SELECT ID,Name,Bio,Vegan, Vegetarisch,Glutenfrei FROM Zutaten;
+
 
         <?php
         if ($result = mysqli_query($link, $query)) {
@@ -75,7 +75,7 @@ if (mysqli_connect_errno()) {
                 echo '
                  <tr>
               <!--  <th scope="row">' . $row['ID'] . '</th> -->
-                <th><i class="fas fa-barcode"></i><a href="https://www.google.com/search?q='.$row['Name'].'" title="Suchen Sie nach '.$row['Name'].' im Web"</a>'. $row['Name'].'</form>';
+                <th><i class="fas fa-barcode"></i><a href="https://www.google.com/search?q='.$row['Name'].'" title="Suchen Sie nach '.$row['Name'].' im Web">'. $row['Name'].'</a>';
                 if ($row['Bio'] == true) {
                     echo '<img alt="bio label" src="pictures/bio.svg" title="bio label" Style="img width="20 height="20"> ';
                 }

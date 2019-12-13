@@ -194,18 +194,12 @@
 
  <?php else: ?>
  <?php $__currentLoopData = $zutatenrows; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $zutatenrow): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
-
  <?php if(isset($zutatenrow['Zutatenname'])): ?>
  <?php echo static::e($zutatenrow['Zutatenname']); ?>
 
  <?php echo '<li>'. $zutatenrow['Zutatenname'] . '</li>'; ?>
 
- <?php elseif(empty($zutatenrow['Zutatenname'])): ?>
-
  <?php endif; ?>
-
-
-
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  <?php endif; ?>
  <?php echo '</ul>'; ?>
