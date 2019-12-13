@@ -2,9 +2,12 @@
 tr:nth-child(even) {
     background: lightsteelblue;
 }
-tbody td:nth-child(2){
+tbody th{
     background-color: white;
-    border-color: white
+
+    border-color: white;
+    border-style: hidden;
+
 }
 
 

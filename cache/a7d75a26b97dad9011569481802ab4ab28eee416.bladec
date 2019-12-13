@@ -22,14 +22,18 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
  <!--stylesheet-->
  <link href="allgemeinStyle.css" rel="stylesheet">
- <title>Detail <?php echo $this->yieldContent('title'); ?></title>
+ <?php echo $this->yieldContent('specialCss'); ?>
+ <title> <?php echo $this->yieldContent('title'); ?></title>
 </head>
 <body>
 <div class="container">
- <?php include('snippets/NavOben.php'); ?>
- <?php echo $this->yieldContent('content'); ?>hallo@show
 
- <?php include('snippets/NavUnten.php'); ?>
+ <?php echo $this->runChild('includes.NavOben'); ?>
+ <?php echo $this->yieldContent('content'); ?>
+
+
+ <?php echo $this->runChild('includes.NavUnten'); ?>
+
 </div>
 
 <!-- Optional JavaScript -->

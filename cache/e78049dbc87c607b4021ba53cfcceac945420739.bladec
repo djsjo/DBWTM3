@@ -1,7 +1,0 @@
-<?php $_shouldextend[1]=1; ?>;
-
-<?php $this->startSection('content'); ?>
-
- hier steht iwelcher kontent
-<?php $this->stopSection(); ?>
-<?php if (@$_shouldextend[1]) { echo $this->runChild('layouts.all'); } ?>
