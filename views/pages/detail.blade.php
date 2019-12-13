@@ -8,7 +8,7 @@
 <!--main part-->
 <div class="row" style="margin-top: 3em;">
 
-{{--@include('layouts.svlogin')--}}
+
 @include('includes.svlogin')
 
 
@@ -42,44 +42,75 @@
                 <!--gastpreise und button-->
                 <div style="margin-left: 6em;">
                     <strong>
-                        <?php
-                        if (isset($_SESSION['role'])) {
-                            switch ($_SESSION['role']) {
-                                case "ma":
-                                    echo "Mitarbeiter-";
-                                    break;
-                                case "student":
-                                    echo "Studenten-";
-                                    break;
-                                case "gast":
-                                    echo "Gast-";
-                                    break;
-                                default:
-                                    echo "Gast-";
-                            }
-                        } else echo 'Gast-';
-                        ?>
+
+
+                        @if(isset($_SESSION['role']))
+                            @switch($_SESSION['role'])
+                                @case("ma")
+                                {!!'Mitarbeiter-'!!}
+
+                                @break
+                                @case("student")
+                                {{"Studenten-"}}
+                                @break
+                                @case("gast")
+                                {{"Gast-"}}
+                                @break
+                                @default
+                                {{"Gast-"}}
+                            @endswitch
+
+
+
+                        @else {{"Gast-"}}
+                        @endif
+
+
                     </strong>Preis
                     <h5 style="margin-left: 1.2em;">
-                        <?php
-                        if (isset($_SESSION['role'])) {
-                            switch ($_SESSION['role']) {
-                                case "ma":
-                                    echo $row['MA-Preis'];
-                                    break;
-                                case "student":
-                                    echo $row['Studentpreis'];
-                                    break;
-                                case "gast":
-                                    echo $row['Gastpreis'];
-                                    break;
-                                default:
-                                    echo $row['Gastpreis'];
-                            }
-                        } //falls nicht angemeldet
-                        else  echo $row['Gastpreis'];
-                        ?>
+                    {{--                        <!--                        -->--}}
+                    <!--                        --><?php
+                        //                        //                       if (isset($_SESSION['role'])) {
+                        //                        //                            switch ($_SESSION['role']) {
+                        //                        //                                case "ma":
+                        //                        //                                    echo $row['MA-Preis'];
+                        //                        //                                    break;
+                        //                        //                                case "student":
+                        //                        //                                    echo $row['Studentpreis'];
+                        //                        //                                    break;
+                        //                        //                                case "gast":
+                        //                        //                                    echo $row['Gastpreis'];
+                        //                        //                                    break;
+                        //                        //                                default:
+                        //                        //                                    echo $row['Gastpreis'];
+                        //                        //                            }
+                        //                        //                        } //falls nicht angemeldet
+                        //                        //                        else  echo $row['Gastpreis'];
+                        //                                                ?>
+
+                        @if (@isset ($_SESSION['role']))
+
+                            @switch($_SESSION['role'])
+                                @case("ma")
+                                {{$row['MA-Preis']}}
+                                @break
+                                @case ("student")
+                                {{$row['Studentpreis']}}
+                                @break
+                                @case("gast")
+                                {{$row['Gastpreis']}}
+                                @break
+                                @default
+                                {{$row['Gastpreis']}}
+                            @endswitch
+                        @else
+                            {{$row['Gastpreis']}}
+                        @endif
+
+
                     </h5>
+
+
                 </div>
                 <form>
                     <button id="vorbestellen" style="margin-top: 9em;margin-left: 3em;" type="button">
@@ -123,25 +154,40 @@
                                  role="tabpanel">
                                 <p>{{$row['Beschreibung']}}
                                     <a href="Impressum.php">Krautsalat</a></p>
+
+
                             </div>
 
                             <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile"
                                  role="tabpanel">
                                 <!-- Trust Me you don't want to know ;)-->
                                 <!--<iframe class="w-100 h-100" src="Start.php"></iframe>-->
-                                <?php
-                                //result variable wurde schon einmal ausgelesen daher eine zweite result
-                                echo '<ul>';
-                                foreach($zutatenrows as $zutatenrow) {
-                                    if (isset($zutatenrow['Zutatenname'])) {
-                                        echo '<li>' . $zutatenrow['Zutatenname'] . '</li>';
-                                    } else echo '<li>Leider sind keine Zutaten angegeben</li>';
+                                <!--                                --><?php
+                                //                                //result variable wurde schon einmal ausgelesen daher eine zweite result
+                                //                                echo '<ul>';
+                                //                                foreach ($zutatenrows as $zutatenrow) {
+                                //                                    if (isset($zutatenrow['Zutatenname'])) {
+                                //                                        echo '<li>' . $zutatenrow['Zutatenname'] . '</li>';
+                                //                                    } else echo '<li>Leider sind keine Zutaten angegeben</li>';
+                                //
+                                //                                }
+                                //                                echo '</ul>';
 
-                                }
-                                echo '</ul>';
 
+                                //                                ?>
 
-                                ?>
+                                {!!'<ul>'!!}
+                                @if(empty($zutatenrows))
+                                    {!! '<li>Leider sind keine Zutaten angegeben</li>'!!}
+                                @else
+                                    @foreach($zutatenrows as $zutatenrow)
+                                        @if(isset($zutatenrow['Zutatenname']))
+                                            {{$zutatenrow['Zutatenname']}}
+                                            {!!'<li>'. $zutatenrow['Zutatenname'] . '</li>' !!}
+                                        @endif
+                                    @endforeach
+                                @endif
+                                {!! '</ul>'!!}
 
                             </div>
                             <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact"

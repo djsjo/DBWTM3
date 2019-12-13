@@ -26,7 +26,7 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 </head>
 <body>
 <div class="container">
-    
+
     @include('includes.NavOben')
     @yield('content')
 

@@ -127,7 +127,7 @@ array_push($labels, "Stéphane Mingot @smingot");
 
 //echo "<footer><p>Sie sehen, mit der View-Engine können Sie jede Menge Code auslagern und in den dedizierten Views eine spezialisierte Syntax verwenden.</p></footer>";
 
-echo $blade->run("pages.detail",array("result"=>$result,"row"=>$row,'zutatenrows'=>$zutatenrows));
+echo $blade->run("pages.detail",array("result"=>$result,"row"=>$row,'zutatenrows'=>$zutatenrows,"session"=>$_SESSION));
 
 //
 //echo "

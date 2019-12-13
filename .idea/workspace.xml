@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/includes/NavOben.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/includes/NavUnten.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/267dc884d62ddef263bf6fff96f273ad3733870a.bladec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/322bf6512f16326e65ad0556fb93373e3ee592b6.bladec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/5172cf7b97e10171fa1d3d138ffdc57089d86146.bladec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/a7d75a26b97dad9011569481802ab4ab28eee416.bladec" beforeDir="false" afterPath="$PROJECT_DIR$/cache/a7d75a26b97dad9011569481802ab4ab28eee416.bladec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/b7f90d4c10dc4a03638db146cd0d9a2cf41fbdc2.bladec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/c5fdcb56f0c34bbf8e31ee6e45076f26a83c109f.bladec" beforeDir="false" afterPath="$PROJECT_DIR$/cache/c5fdcb56f0c34bbf8e31ee6e45076f26a83c109f.bladec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/e78049dbc87c607b4021ba53cfcceac945420739.bladec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/e7c7669e93d0a9cbaf95755d1a2a7822c818ffef.bladec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/ea8de9ed9f550f604871df2b30eb064a7d0f7166.bladec" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/all.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/all.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/detail.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +70,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views/includes" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -130,7 +140,7 @@
       <workItem from="1576070850278" duration="10306000" />
       <workItem from="1576087483425" duration="31000" />
       <workItem from="1576162821449" duration="12325000" />
-      <workItem from="1576247959367" duration="541000" />
+      <workItem from="1576247959367" duration="6533000" />
     </task>
     <servers />
   </component>
