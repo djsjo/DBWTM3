@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Models/ZutatenModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zutaten2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zutaten.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ZutatenController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,16 +64,17 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\M3" />
-      <recent name="C:\xampp\htdocs\M3\views\pages" />
-      <recent name="C:\xampp\htdocs\M3\views\includes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\M3\Controllers" />
       <recent name="C:\xampp\htdocs\M3\views\pages" />
       <recent name="C:\xampp\htdocs\M3\views\includes" />
       <recent name="C:\xampp\htdocs\M3\views\layouts" />
       <recent name="C:\xampp\htdocs\M3\snippets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\M3" />
+      <recent name="C:\xampp\htdocs\M3\views\pages" />
+      <recent name="C:\xampp\htdocs\M3\views\includes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -129,6 +133,7 @@
       <workItem from="1576087483425" duration="31000" />
       <workItem from="1576162821449" duration="12325000" />
       <workItem from="1576247959367" duration="13944000" />
+      <workItem from="1576332858089" duration="1854000" />
     </task>
     <servers />
   </component>
