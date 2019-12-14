@@ -11,9 +11,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 require_once "Models/ZutatenModel.php";
 
-$dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
-$dotenv->load();
-$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
+
 
 
 use eftec\bladeone\BladeOne;
@@ -28,6 +26,9 @@ class ZutatenController
         $cache = __DIR__ . '/cache';
         $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
     }
+    public function zutaten($id=0){
+        $data=ZutatenModel::zutaten();
+    }
 }
 
 /*
@@ -37,34 +38,10 @@ class ZutatenController
  * übergeben werden können
  */
 
-$query = 'SELECT ID,Name,Bio,Vegan, Vegetarisch,Glutenfrei FROM Zutaten order by Bio desc,Name asc;'; // Ihre SQL Query aus HeidiSQL
-$link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
-
-if (mysqli_connect_errno()) {
-    printf("Konnte nicht zur entfernten Datenbank verbinden: %s\n", mysqli_connect_error());
-    exit();
-} else {
-    //echo 'lief wohl gut';
-}
 
 
-$result = mysqli_query($link, $query);
-//$result2 = mysqli_query($link, $query);
-//gucken ob id gesetzt ist
-//$row = mysqli_fetch_assoc($result);
-
-//$title = "Views Demo";
 
 
-$zutatenrows = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    if (isset($row)) {
-
-        $zutatenrows[] = $row;
-    }
-
-}
-mysqli_close($link);
 
 
 $defs = array();
