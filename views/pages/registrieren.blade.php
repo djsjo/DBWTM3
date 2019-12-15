@@ -9,7 +9,11 @@
                   action="Registrieren.php" autocomplete="on">
                 <fieldset class="rahmenumform" form="registrierung">
                     <legend style="width: auto;padding-bottom: 0.7em;">Registrierung</legend>
+                    @if(isset($_SESSION['firstRegisterSuccesful'])and $_SESSION['firstRegisterSuccesful']==true)
+                        @include('includes.registrierungFurther')
+                        @else
                     @include('includes.registrierungstart')
+                        @endif
 
 
 
@@ -18,7 +22,7 @@
 
 
 
-                @include('includes.registrierungFurther')
+
             </form>
         </div>
     </div>

@@ -379,6 +379,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 echo ' height: 63% " class=" w-100">'
 
 
+
                                     . $row['Name'];
 
                                 if (!isset($row['Vorrat']) or $row['Vorrat'] <= 0) {

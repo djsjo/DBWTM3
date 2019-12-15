@@ -1,6 +1,6 @@
 <fieldset>
     <legend>Ihre Registrierung</legend>
-    <?php var_dump($_REQUEST);?>
+
     <div class="row">
         <div class="col-10">
             <div class="row">
