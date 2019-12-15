@@ -156,7 +156,8 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                     <?php
                     //fall mindestens limit oder avail angegeben wurden
                     if (isset($_GET['limit']) || isset($_GET['avail'])) {
-                        echo 'gehen in besonderen fall rein';
+                      //
+                        //echo 'gehen in besonderen fall rein';
                         $limit = 100;
                         //$avail=false;
 
@@ -166,7 +167,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                         //avail gesetzt
                         if (isset($_GET['avail'])) {
                             $avail = $_GET['avail'];
-                            echo 'avail geht';
+                           // echo 'avail geht';
                             //var_dump($avail);
 
                             //wenn avail query verändern
@@ -184,7 +185,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                       where Vorrat >0'; // Ihre SQL Query aus HeidiSQL
 
                             if (isset($_GET['speiselistenKategorien']) and $_GET['speiselistenKategorien'] != 0) {
-                                echo 'geht in speiselisten bereich';
+                               // echo 'geht in speiselisten bereich';
                                 $query = $query . ' and Kategorien.ID=' . $_GET['speiselistenKategorien'];
 
                             }
@@ -199,7 +200,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
                                 $query = $query . '  MahlzeitVegan=1';
                             }
                             $query = $query . ' ;';
-                            echo $query;
+                           // echo $query;
 
                             //avail nicht gesetzt aber limit
                         } else {
@@ -309,7 +310,7 @@ $rest = substr($_SERVER['REQUEST_URI'], 4);
 
                     } //weder avail noch limit gesetzt
                     else {
-                        echo 'gehen in fall dass weder limit noch avila gesetzte ist ';
+                       // echo 'gehen in fall dass weder limit noch avila gesetzte ist ';
                         $query = 'SELECT Mahlzeiten.Name,Mahlzeiten.ID as MahlzeitenID,Beschreibung,Vorrat,Mahlzeiten.Kategorie,Bilder.ID,\'Alt-Text\',`Binärdaten`,Titel, Bezeichnung,hatOberkategorie,
                         hatBild,enthältZutaten.ZutatenID,Bio,Vegan,Vegetarisch,Glutenfrei,hatBilder.BilderID,Kategorien.ID AS KategorienID
 								,Zutaten.ID AS ZutatenID,
