@@ -20,13 +20,13 @@ class ZutatenController
 {
     private $blade;
 
-    public function _construct()
+    public function __construct()
     {
-        $views = __DIR__ . '/views';
-        $cache = __DIR__ . '/cache';
+        $views = __DIR__ . '/../views';
+        $cache = __DIR__ . '/../cache';
         $this->blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
     }
-    public function zutaten($id=0){
+    public function zutaten(){
         $data=ZutatenModel::zutaten();
         $zutatenrows=$data;
         echo $this->blade->run("pages.zutaten", array('zutatenrows' => $zutatenrows));

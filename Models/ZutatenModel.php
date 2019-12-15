@@ -1,9 +1,9 @@
 <?php
 //quasi ein viewmodel
-$dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
+$dotenv = Dotenv\Dotenv::create(__DIR__.'/..', '.env');
 $dotenv->load();
 $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
-$link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
+
 
 class ZutatenModel
 {
@@ -19,9 +19,9 @@ class ZutatenModel
 
     }
 
-    public static function zutaten($id)
+    public static function zutaten($id=0)
     {
-
+        $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
         if (mysqli_connect_errno()) {
             printf("Konnte nicht zur entfernten Datenbank verbinden: %s\n", mysqli_connect_error());
             exit();
@@ -29,7 +29,8 @@ class ZutatenModel
             //echo 'lief wohl gut';
         }
         $query = 'SELECT ID,Name,Bio,Vegan, Vegetarisch,Glutenfrei FROM Zutaten order by Bio desc,Name asc;'; // Ihre SQL Query aus HeidiSQL
-        global $link;
+
+
         $result = mysqli_query($link, $query);
 //$result2 = mysqli_query($link, $query);
 //gucken ob id gesetzt ist
