@@ -1,14 +1,14 @@
 <?php
-require "vendor/autoload.php";
+
 
 /*
  *	BladeOne Viewengine aufsetzen
  */
-//notwendiges für datenbankaufbau
+
 
 if (!isset($_SESSION)) session_start();
-require __DIR__ . '/vendor/autoload.php';
-
+#77require __DIR__ . '/vendor/autoload.php';
+require_once "vendor\autoload.php";
 require_once "Models/ZutatenModel.php";
 
 
@@ -24,10 +24,12 @@ class ZutatenController
     {
         $views = __DIR__ . '/views';
         $cache = __DIR__ . '/cache';
-        $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
+        $this->blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
     }
     public function zutaten($id=0){
         $data=ZutatenModel::zutaten();
+        $zutatenrows=$data;
+        echo $this->blade->run("pages.zutaten", array('zutatenrows' => $zutatenrows));
     }
 }
 
@@ -93,7 +95,7 @@ array_push($labels, "Stéphane Mingot @smingot");
 //echo "<footer><p>Sie sehen, mit der View-Engine können Sie jede Menge Code auslagern und in den dedizierten Views eine spezialisierte Syntax verwenden.</p></footer>";
 
 //echo $blade->run("pages.detail",array("result"=>$result,"row"=>$row,'zutatenrows'=>$zutatenrows,"session"=>$_SESSION));
-echo $blade->run("pages.zutaten", array('zutatenrows' => $zutatenrows));
+
 //
 //echo "
 //		</div>
