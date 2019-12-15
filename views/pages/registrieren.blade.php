@@ -11,16 +11,12 @@
                     <legend style="width: auto;padding-bottom: 0.7em;">Registrierung</legend>
                     @if(isset($_SESSION['firstRegisterSuccesful'])and $_SESSION['firstRegisterSuccesful']==true)
                         @include('includes.registrierungFurther')
-                        @else
-                    @include('includes.registrierungstart')
-                        @endif
-
+                    @else
+                        @include('includes.registrierungstart')
+                    @endif
 
 
                 </fieldset>
-
-
-
 
 
             </form>

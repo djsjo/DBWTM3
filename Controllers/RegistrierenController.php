@@ -31,7 +31,12 @@ class RegistrierenController
         echo $this->blade->run("pages.registrieren", array());
     }
 
-    public function checkFirstRegister(){
+    public function checkFirstRegister()
+    {
+        echo 'wird gecheckt';
+        unset($_SESSION['checkfirstRegister']);
+        //unset($_REQUEST['checkfirstRegister']);
+        echo '<meta content="2; url=./Registrieren.php" http-equiv="refresh">';
 
     }
 }

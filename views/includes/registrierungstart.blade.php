@@ -10,7 +10,7 @@
                     </label>
                 </div>
                 <div class="col-5" style="margin-left: 0em ">
-                    <input type="text" id="username" name= username value="{{$_REQUEST['username'] or ''}}">
+                    <input type="text" id="username" name= username value="{{$_SESSION['username'] or ''}}">
                 </div>
 
             </div>
@@ -58,19 +58,19 @@
                         <ul style="list-style: none;">
                             <li>
                                 <label>
-                                    <input type="checkbox" name="gast" @if(isset($_REQUEST['gast'])){!! "checked" !!}@endif>
+                                    <input type="checkbox" name="gast" @if(isset($_SESSION['gast'])){!! "checked" !!}@endif>
                                     Ich bin Gast
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="arbeitet" @if(isset($_REQUEST['arbeitet'])){!! "checked" !!}@endif>
+                                    <input type="checkbox" name="arbeitet" @if(isset($_SESSION['arbeitet'])){!! "checked" !!}@endif>
                                     Ich arbeite an der FH
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="studiert" @if(isset($_REQUEST['studiert'])){!! "checked" !!}@endif>
+                                    <input type="checkbox" name="studiert" @if(isset($_SESSION['studiert'])){!! "checked" !!}@endif>
                                     Ich studiere an der FH
                                 </label>
                             </li>
@@ -79,7 +79,9 @@
                     </fieldset>
                 </div>
 
-
+                <div>
+                    <input type="hidden" name="checkfirstRegister" value=true>
+                </div>
             </div>
 
             <div class="row">
