@@ -44,7 +44,7 @@ $dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
                     durchstöbern, aber noch nicht bestellen.
                 </p>
                 <p>
-                    Registrieren Sie sich <a href="ausprobieren.php">hier</a>
+                    Registrieren Sie sich <a href="Registrieren.php">hier</a>
                     , um über die Veröffentlichung des Dienstes per Mail informiert zu werden.
                 </p>
             </section>
@@ -58,11 +58,12 @@ $dotenv->required(['DB_HOST','DB_NAME','DB_USER','DB_PASS','DB_PORT']);
                     <p>...und gemeinsam mit Kommilitonen und Freunden Essen</p>
                 </div>
                 <div class="col-4" style="">
-                    <form>
+                    <form action="Registrieren.php">
                         <br>
+
                         <div class="row  h-50">
                             <div class="col-12 align-self-end w-50 h-100 " style="margin-left: 8em;">
-                                <button type="button"><i class="far fa-hand-point-right"></i> Registrieren</button>
+                                <button type="submit"><i class="far fa-hand-point-right"></i> Registrieren</button>
                             </div>
                         </div>
 
