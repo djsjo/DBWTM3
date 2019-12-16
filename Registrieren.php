@@ -69,5 +69,7 @@ if (isset($_REQUEST['studiengang'])) {
 
 
 $controller->start();
+//$controller->createUser();
+//$controller->createStudent();
 
 ?>

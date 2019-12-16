@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/includes/registrierungErfolgreich.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/RegistrierenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegistrierenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/registrieren.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/registrieren.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/RegistrierenModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/RegistrierenModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Registrieren.php" beforeDir="false" afterPath="$PROJECT_DIR$/Registrieren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/includes/registrierungErfolgreich.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungErfolgreich.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,18 +65,18 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\M3\Models" />
-      <recent name="C:\xampp\htdocs\M3\views\includes" />
-      <recent name="C:\xampp\htdocs\M3" />
-      <recent name="C:\xampp\htdocs\M3\views\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\M3\Controllers" />
       <recent name="C:\xampp\htdocs\M3\views\pages" />
       <recent name="C:\xampp\htdocs\M3\views\includes" />
       <recent name="C:\xampp\htdocs\M3\views\layouts" />
       <recent name="C:\xampp\htdocs\M3\snippets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\M3\views\includes" />
+      <recent name="C:\xampp\htdocs\M3\Models" />
+      <recent name="C:\xampp\htdocs\M3" />
+      <recent name="C:\xampp\htdocs\M3\views\pages" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -136,7 +137,7 @@
       <workItem from="1576247959367" duration="13944000" />
       <workItem from="1576332858089" duration="3364000" />
       <workItem from="1576409415070" duration="36665000" />
-      <workItem from="1576483147191" duration="7715000" />
+      <workItem from="1576483147191" duration="15700000" />
     </task>
     <servers />
   </component>

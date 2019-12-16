@@ -149,4 +149,11 @@ class RegistrierenController
 
 
     }
+
+    public function createUser(){
+            RegistrierenModel::createUser();
+    }
+    public function createStudent(){
+        RegistrierenModel::createStudent();
+    }
 }
