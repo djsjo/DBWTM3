@@ -1,9 +1,9 @@
 <?php
 if (!isset($_SESSION)) session_start();
-require 'C:\xampp\htdocs\M3\vendor\autoload.php';
-$dotenv = Dotenv\Dotenv::create('C:\xampp\htdocs\M3', '.env');
-$dotenv->load();
-$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
+//require 'C:\xampp\htdocs\M3\vendor\autoload.php';
+//$dotenv = Dotenv\Dotenv::create('C:\xampp\htdocs\M3', '.env');
+//$dotenv->load();
+//$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 
 
 ?>
