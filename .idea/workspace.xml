@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/RegistrierenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegistrierenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/RegistrierenModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/RegistrierenModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Registrieren.php" beforeDir="false" afterPath="$PROJECT_DIR$/Registrieren.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/includes/registrierungFurther.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungFurther.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/includes/registrierungstart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungstart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/registrieren.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/registrieren.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +131,7 @@
       <workItem from="1576247959367" duration="13944000" />
       <workItem from="1576332858089" duration="3364000" />
       <workItem from="1576409415070" duration="36665000" />
+      <workItem from="1576483147191" duration="399000" />
     </task>
     <servers />
   </component>
