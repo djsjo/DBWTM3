@@ -77,18 +77,18 @@ class RegistrierenController
             $_SESSION['studiengang'] = $_REQUEST['studiengang'];
         }
 
-
-        if (isset($_SESSION['firstRegisterSuccesful']) and isset($_SESSION['checksecondRegister'])
+        if (isset($_SESSION['checkfirstRegister']) and $_SESSION['checkfirstRegister'] == true) {
+            //$_SESSION['firstRegisterSuccesful']=true;
+            $this->checkFirstRegister();
+        }
+        elseif (isset($_SESSION['firstRegisterSuccesful']) and isset($_SESSION['checksecondRegister'])
             and ($_SESSION['firstRegisterSuccesful'] == true) and $_SESSION['checksecondRegister'] == true) {
             if (isset($_SESSION['checkfirstRegister'])) {
                 unset($_SESSION['checkfirstRegister']);
             }
             $this->checkSecondRegister();
         }
-        if (isset($_SESSION['checkfirstRegister']) and $_SESSION['checkfirstRegister'] == true) {
-            //$_SESSION['firstRegisterSuccesful']=true;
-            $this->checkFirstRegister();
-        }
+
 
         echo $this->blade->run("pages.registrieren", array());
     }
@@ -100,6 +100,7 @@ function checkFirstRegister()
 {
    // echo 'wird gecheckt';
     $_SESSION['checkfirstRegister'] = false;
+    $_SESSION['firstRegisterSuccesful']=false;
     $_SESSION['fehlernachrichtenBetroffeneFelder'] = array();
     $_SESSION['fehlernachrichten'] = array();
 
@@ -138,7 +139,7 @@ function checkFirstRegister()
         $_SESSION['firstRegisterSuccesful'] = true;
     }
 
-    // echo '<meta content="2; url=./Registrieren.php" http-equiv="refresh">';
+
     echo $this->blade->run("pages.registrieren", array());
 }
 
@@ -149,6 +150,7 @@ function checkSecondRegister()
     $_SESSION['checksecondRegister'] = false;
     $_SESSION['fehlernachrichtenBetroffeneFelder'] = array();
     $_SESSION['fehlernachrichten'] = array();
+    $_SESSION['secondRegisterSuccesful']=false;
 
     //unset($_REQUEST['checkfirstRegister']);
     //email exists?
