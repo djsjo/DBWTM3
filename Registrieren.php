@@ -49,15 +49,19 @@ if (isset($_REQUEST['vorname'])){
 
 
 if(isset($_SESSION['firstRegisterSuccesful'])and ($_SESSION['firstRegisterSuccesful']==true))
-{unset(isset($_SESSION['checkfirstRegister']));
-    $controller->start();
+{
+    if(isset($_SESSION['checkfirstRegister'])){
+    unset($_SESSION['checkfirstRegister']);
+    }
+
+
 
 
 }
 if(isset($_SESSION['checkfirstRegister'])and $_SESSION['checkfirstRegister']==true)
 {
-    $_SESSION['firstRegisterSuccesful']=true;
-    $controller->checkFirstRegister();
+    //$_SESSION['firstRegisterSuccesful']=true;
+    $controller->checkFirstRegister(array('passwort'=>$_REQUEST));
 }
 else
 $controller->start();

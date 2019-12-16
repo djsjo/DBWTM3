@@ -17,12 +17,12 @@
 
             <div class="row">
                 <div class="col-2">
-                    <label for="passwortwh">Passwort
+                    <label for="passwort">Passwort
 
                     </label>
                 </div>
                     <div class="col-5">
-                        <input type="password" id="passwortwh" placeholder="*******">
+                        <input type="password" id="passwort" name="passwort" placeholder="*******">
                     </div>
 
 
@@ -38,12 +38,12 @@
 
             <div class="row">
                 <div class="col-2">
-                    <label for="passwort">Passwort
+                    <label for="passwortwh">Passwort
 
                     </label>
                 </div>
                 <div class="col-5">
-                    <input type="password" id="passwort" placeholder="*******">
+                    <input type="password" id="passwortwh" name="passwortwh" placeholder="*******">
                     <p><small> Hier müssen Sie das Passwort wiederholen.</small></p>
                 </div>
 
@@ -86,7 +86,7 @@
 
             <div class="row">
                 <div class="col-3">
-                    <button type="submit" name="action" value="0">Registrierung fortsetzten</button>
+                    <button form="registrierung" type="submit" name="action" value="0">Registrierung fortsetzten</button>
                 </div>
             </div>
         </div>
