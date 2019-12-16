@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/includes/registrierungErfolgreich.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/RegistrierenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegistrierenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/includes/registrierungFurther.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungFurther.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/includes/registrierungstart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungstart.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pages/registrieren.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/registrieren.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +58,7 @@
     <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/includes" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
@@ -137,7 +136,7 @@
       <workItem from="1576247959367" duration="13944000" />
       <workItem from="1576332858089" duration="3364000" />
       <workItem from="1576409415070" duration="36665000" />
-      <workItem from="1576483147191" duration="6785000" />
+      <workItem from="1576483147191" duration="7715000" />
     </task>
     <servers />
   </component>

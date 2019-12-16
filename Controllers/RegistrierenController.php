@@ -37,14 +37,14 @@ class RegistrierenController
             //$_SESSION['firstRegisterSuccesful']=true;
             $this->checkFirstRegister();
            // echo $this->blade->run("pages.registrieren", array());
-            echo '<meta content="4; url=./Registrieren.php" http-equiv="refresh">';
+            echo '<meta content="1; url=./Registrieren.php" http-equiv="refresh">';
         } elseif (isset($_SESSION['firstRegisterSuccesful']) and isset($_SESSION['checksecondRegister'])
             and ($_SESSION['firstRegisterSuccesful'] == true) and $_SESSION['checksecondRegister'] == true) {
             if (isset($_SESSION['checkfirstRegister'])) {
                 unset($_SESSION['checkfirstRegister']);
             }
             $this->checkSecondRegister();
-            echo '<meta content="4; url=./Registrieren.php" http-equiv="refresh">';
+            echo '<meta content="1; url=./Registrieren.php" http-equiv="refresh">';
             //echo $this->blade->run("pages.registrieren", array());
             //
 
@@ -137,7 +137,9 @@ class RegistrierenController
 
 
             array_push($_SESSION['fehlernachrichten'], $nachricht);
-            if (empty($_SESSION['fehlernachrichtenBetroffeneFelder'])) {
+            var_dump($_SESSION['fehlernachrichtenBetroffeneFelder']);
+            if (count($_SESSION['fehlernachrichtenBetroffeneFelder'])==0) {
+                echo 'läuft ist leer';
                 $_SESSION['secondRegisterSuccesful'] = true;
             }
         }

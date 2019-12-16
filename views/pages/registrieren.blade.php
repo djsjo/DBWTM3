@@ -12,20 +12,20 @@
                     @if(!empty($_SESSION['fehlernachrichten']))
                         {{var_dump($_SESSION['fehlernachrichten'])}}
                         {{var_dump($_SESSION['fehlernachrichtenBetroffeneFelder'])}}
-                    <div class="row">
-                        <div class="col-10" style="background-color: #ff253a">
-                            Es gab Fehler beim Bearbeiten Ihrer Anfrage:
-                            <ul style="background-color: cornsilk">
+                        <div class="row">
+                            <div class="col-10" style="background-color: #ff253a">
+                                Es gab Fehler beim Bearbeiten Ihrer Anfrage:
+                                <ul style="background-color: cornsilk">
 
-                                @foreach($_SESSION['fehlernachrichten'] as $fehlernachricht)
-                                <li>
-                                    {{$fehlernachricht}}
-                                </li>
+                                    @foreach($_SESSION['fehlernachrichten'] as $fehlernachricht)
+                                        <li>
+                                            {{$fehlernachricht}}
+                                        </li>
                                 @endforeach
-                            <?php //unset( $_SESSION['fehlernachrichten']) ;
-                            ?>
+                                <?php //unset( $_SESSION['fehlernachrichten']) ;
+                                ?>
+                            </div>
                         </div>
-                    </div>
                     @endif
 
                     @if(isset($_SESSION['firstRegisterSuccesful'])and $_SESSION['firstRegisterSuccesful']==true)
@@ -34,11 +34,10 @@
                         @include('includes.registrierungstart')
                     @endif
 
-                   <?php //unset($_SESSION['fehlernachrichtenBetroffeneFelder']) ;
-                    if(isset($_SESSION['secondRegisterSuccesful'])and $_SESSION['secondRegisterSuccesful']==true)
-                        {
-                            echo 'sie sind fertig';
-                        }
+                    <?php //unset($_SESSION['fehlernachrichtenBetroffeneFelder']) ;
+                    @if (isset($_SESSION['secondRegisterSuccesful']) and $_SESSION['secondRegisterSuccesful'] == true)
+                    @include('includes.registrierungErfolgreich')
+                    @endif
                     ?>
                 </fieldset>
 
