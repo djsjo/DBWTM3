@@ -22,7 +22,7 @@
                                     {{$fehlernachricht}}
                                 </li>
                                 @endforeach
-                            <?php unset( $_SESSION['fehlernachrichten']) ;
+                            <?php //unset( $_SESSION['fehlernachrichten']) ;
                             ?>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         @include('includes.registrierungstart')
                     @endif
 
-                    <?php unset($_SESSION['fehlernachrichtenBetroffeneFelder']) ;
+                   <?php //unset($_SESSION['fehlernachrichtenBetroffeneFelder']) ;
                     if(isset($_SESSION['secondRegisterSuccesful'])and $_SESSION['secondRegisterSuccesful']==true)
                         {
                             echo 'sie sind fertig';

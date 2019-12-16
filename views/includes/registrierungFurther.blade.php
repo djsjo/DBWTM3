@@ -12,7 +12,7 @@
                     </label>
                 </div>
                 <div class="col-5" style="margin-left: 0em ">
-                    <input type="text" id="vorname" name="vorname" value="{{$_SESSION['vorname'] or ''}}">
+                    <input required type="text" id="vorname" name="vorname" value="{{$_SESSION['vorname'] or ''}}">
                 </div>
 
             </div>
@@ -23,7 +23,7 @@
                     </label>
                 </div>
                 <div class="col-5" style="margin-left: 0em ">
-                    <input type="text" id="nachname" name="nachname" value="{{$_SESSION['nachname'] or ''}}">
+                    <input required type="text" id="nachname" name="nachname" value="{{$_SESSION['nachname'] or ''}}">
                 </div>
 
             </div>
@@ -35,7 +35,7 @@
                     </label>
                 </div>
                 <div class="col-5" style="margin-left: 0em ">
-                    <input type="email" id="email" name="email" value="{{$_SESSION['email'] or ''}}" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('email'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
+                    <input required type="email" id="email" name="email" value="{{$_SESSION['email'] or ''}}" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('email'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
                         {!! 'class="alert-danger"' !!}
 
 
@@ -51,7 +51,7 @@
                     </label>
                 </div>
                 <div class="col-5" style="margin-left: 0em ">
-                    <input type="date" id="gebDat" name="gebDat" value="{{$_SESSION['gebDat'] or ''}}">
+                    <input required type="date" id="gebDat" name="gebDat" value="{{$_SESSION['gebDat'] or ''}}">
                 </div>
 
             </div>
@@ -95,7 +95,7 @@
                     </label>
                 </div>
                 <div class="col-5" style="margin-left: 0em ">
-                    <input type="number" min="000000" id="matrikelnr" name="matrikelnr" value="{{$_SESSION['matrikelnr'] or ''}}" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('matrikelnr'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
+                    <input required type="number" min="000000" id="matrikelnr" name="matrikelnr" value="{{$_SESSION['matrikelnr'] or ''}}" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('matrikelnr'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
                         {!! 'class="alert-danger"' !!}
 
 
@@ -122,7 +122,7 @@
 
             <div class="row">
                 <div class="col-3">
-                    <button type="submit" name="action" value="0">Registrierung fortsetzten</button>
+                    <button type="submit" name="action" >senden</button>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@
                     </label>
                 </div>
                 <div class="col-5 " style="margin-left: 0em ">
-                    <input type="text" id="username" name=username value="{{$_SESSION['username'] or ''}}"
+                    <input required type="text" id="username" name=username value="{{$_SESSION['username'] or ''}}"
 
                            @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array('username',$_SESSION['fehlernachrichtenBetroffeneFelder']))
                            class="alert-danger"
@@ -26,7 +26,7 @@
                     </label>
                 </div>
                 <div class="col-5">
-                    <input type="password" id="passwort" name="passwort" placeholder="*******"
+                    <input required type="password" id="passwort" name="passwort" placeholder="*******"
                            @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('passwort'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
                                {!! 'class="alert-danger"' !!}
 
@@ -55,7 +55,7 @@
                     </label>
                 </div>
                 <div class="col-5">
-                    <input type="password" id="passwortwh" name="passwortwh" placeholder="*******" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('passwortwh'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
+                    <input required type="password" id="passwortwh" name="passwortwh" placeholder="*******" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('passwortwh'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
                         {!! 'class="alert-danger"' !!}
 
 
@@ -88,7 +88,7 @@
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox"
+                                    <input required type="checkbox"
                                            name="studiert" @if(isset($_SESSION['studiert'])){!! "checked" !!}@endif>
                                     Ich studiere an der FH
                                 </label>
