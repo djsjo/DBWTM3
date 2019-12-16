@@ -63,7 +63,7 @@ class RegistrierenModel
         }
         else return false;
 
-
+        mysqli_close($link);
     }
     public static function matrNrExits($matrikelnr){
         $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
@@ -84,7 +84,7 @@ class RegistrierenModel
         }
         else return false;
 
-
+        mysqli_close($link);
     }
     public static function matrNrInRange($matrikelnr){
         $link = mysqli_connect(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_PORT'));
@@ -105,6 +105,6 @@ class RegistrierenModel
         }
         else return false;
 
-
+        mysqli_close($link);
     }
 }

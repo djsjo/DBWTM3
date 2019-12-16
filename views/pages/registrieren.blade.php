@@ -1,7 +1,7 @@
 @extends('layouts.all');
 @section('title','Registrierung')
 
-//@section('specialCss','<link href="ZutatenStyle.css" rel="stylesheet">')
+@section('specialCss','<link href="ZutatenStyle.css" rel="stylesheet">')
 @section('content')
     <div class="row">
         <div class="col">
@@ -11,16 +11,19 @@
                     <legend style="width: auto;padding-bottom: 0.7em;">Registrierung</legend>
                     @if(!empty($_SESSION['fehlernachrichten']))
                         {{var_dump($_SESSION['fehlernachrichten'])}}
+                        {{var_dump($_SESSION['fehlernachrichtenBetroffeneFelder'])}}
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-10" style="background-color: #ff253a">
                             Es gab Fehler beim Bearbeiten Ihrer Anfrage:
-                            <ul style="list-style: none;">
+                            <ul style="background-color: cornsilk">
 
                                 @foreach($_SESSION['fehlernachrichten'] as $fehlernachricht)
                                 <li>
                                     {{$fehlernachricht}}
                                 </li>
                                 @endforeach
+                            <?php unset( $_SESSION['fehlernachrichten']) ;
+                            ?>
                         </div>
                     </div>
                     @endif
@@ -31,7 +34,12 @@
                         @include('includes.registrierungstart')
                     @endif
 
-
+                    <?php unset($_SESSION['fehlernachrichtenBetroffeneFelder']) ;
+                    if(isset($_SESSION['secondRegisterSuccesful'])and $_SESSION['secondRegisterSuccesful']==true)
+                        {
+                            echo 'sie sind fertig';
+                        }
+                    ?>
                 </fieldset>
 
 

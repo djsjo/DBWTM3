@@ -6,6 +6,9 @@ $controller=new RegistrierenController();
 if (isset($_REQUEST['checkfirstRegister'])){
     $_SESSION['checkfirstRegister']=  $_REQUEST['checkfirstRegister'];
 }
+if (isset($_REQUEST['checksecondRegister'])){
+    $_SESSION['checksecondRegister']=  $_REQUEST['checksecondRegister'];
+}
 if (isset($_REQUEST['username'])){
     $_SESSION['username']=  $_REQUEST['username'];
 }
@@ -17,6 +20,13 @@ if (isset($_REQUEST['arbeitet'])){
 }
 if (isset($_REQUEST['studiert'])){
     $_SESSION['studiert']=  $_REQUEST['studiert'];
+}
+if (isset($_REQUEST['studiert'])){
+    $_SESSION['studiert']=  $_REQUEST['studiert'];
+}
+if (isset($_REQUEST['passwort'])and isset($_REQUEST['passwortwh'])){
+    $_SESSION['passwort']=  $_REQUEST['passwort'];
+    $_SESSION['passwortwh']=  $_REQUEST['passwortwh'];
 }
 //variablen aus registrierung further persisten macehn
 
@@ -48,22 +58,10 @@ if (isset($_REQUEST['vorname'])){
 
 
 
-if(isset($_SESSION['firstRegisterSuccesful'])and ($_SESSION['firstRegisterSuccesful']==true))
-{
-    if(isset($_SESSION['checkfirstRegister'])){
-    unset($_SESSION['checkfirstRegister']);
-    }
 
 
 
 
-}
-if(isset($_SESSION['checkfirstRegister'])and $_SESSION['checkfirstRegister']==true)
-{
-    //$_SESSION['firstRegisterSuccesful']=true;
-    $controller->checkFirstRegister(array('passwort'=>$_REQUEST));
-}
-else
 $controller->start();
 
 ?>

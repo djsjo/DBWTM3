@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027f1d55-d9e4-4c25-8401-02a12285330d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/RegistrierenModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/RegistrierenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegistrierenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/RegistrierenModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/RegistrierenModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Registrieren.php" beforeDir="false" afterPath="$PROJECT_DIR$/Registrieren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/includes/registrierungFurther.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungFurther.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/includes/registrierungstart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/registrierungstart.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pages/registrieren.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/registrieren.blade.php" afterDir="false" />
     </list>
@@ -137,7 +138,7 @@
       <workItem from="1576162821449" duration="12325000" />
       <workItem from="1576247959367" duration="13944000" />
       <workItem from="1576332858089" duration="3364000" />
-      <workItem from="1576409415070" duration="30025000" />
+      <workItem from="1576409415070" duration="36665000" />
     </task>
     <servers />
   </component>

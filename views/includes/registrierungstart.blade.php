@@ -9,8 +9,12 @@
 
                     </label>
                 </div>
-                <div class="col-5" style="margin-left: 0em ">
-                    <input type="text" id="username" name= username value="{{$_SESSION['username'] or ''}}">
+                <div class="col-5 " style="margin-left: 0em ">
+                    <input type="text" id="username" name=username value="{{$_SESSION['username'] or ''}}"
+
+                           @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array('username',$_SESSION['fehlernachrichtenBetroffeneFelder']))
+                           class="alert-danger"
+                            @endif >
                 </div>
 
             </div>
@@ -21,9 +25,17 @@
 
                     </label>
                 </div>
-                    <div class="col-5">
-                        <input type="password" id="passwort" name="passwort" placeholder="*******">
-                    </div>
+                <div class="col-5">
+                    <input type="password" id="passwort" name="passwort" placeholder="*******"
+                           @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('passwort'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
+                               {!! 'class="alert-danger"' !!}
+
+
+                            @endif
+                    >
+
+                </div>
+
 
 
             </div>
@@ -43,7 +55,11 @@
                     </label>
                 </div>
                 <div class="col-5">
-                    <input type="password" id="passwortwh" name="passwortwh" placeholder="*******">
+                    <input type="password" id="passwortwh" name="passwortwh" placeholder="*******" @if(isset($_SESSION['fehlernachrichtenBetroffeneFelder']) and in_array(('passwortwh'),($_SESSION['fehlernachrichtenBetroffeneFelder'])))
+                        {!! 'class="alert-danger"' !!}
+
+
+                            @endif>
                     <p><small> Hier müssen Sie das Passwort wiederholen.</small></p>
                 </div>
 
@@ -58,19 +74,22 @@
                         <ul style="list-style: none;">
                             <li>
                                 <label>
-                                    <input type="checkbox" name="gast" @if(isset($_SESSION['gast'])){!! "checked" !!}@endif>
+                                    <input type="checkbox"
+                                           name="gast" @if(isset($_SESSION['gast'])){!! "checked" !!}@endif>
                                     Ich bin Gast
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="arbeitet" @if(isset($_SESSION['arbeitet'])){!! "checked" !!}@endif>
+                                    <input type="checkbox"
+                                           name="arbeitet" @if(isset($_SESSION['arbeitet'])){!! "checked" !!}@endif>
                                     Ich arbeite an der FH
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="studiert" @if(isset($_SESSION['studiert'])){!! "checked" !!}@endif>
+                                    <input type="checkbox"
+                                           name="studiert" @if(isset($_SESSION['studiert'])){!! "checked" !!}@endif>
                                     Ich studiere an der FH
                                 </label>
                             </li>
@@ -86,7 +105,8 @@
 
             <div class="row">
                 <div class="col-3">
-                    <button form="registrierung" type="submit" name="action" value="0">Registrierung fortsetzten</button>
+                    <button form="registrierung" type="submit" name="action" value="0">Registrierung fortsetzten
+                    </button>
                 </div>
             </div>
         </div>
